@@ -14,16 +14,17 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
-div.hero.well{ 
-	padding-top: 0%;
-	height: 120px;
-		h1{
-			text-align: center;
-			padding-top: 3%;
-
-		}
-		p{
-			padding-top: 3%;
-
-		}
+div.btn{
+	min-width: 500px;
+    max-width: 500px;
+    min-height:100px;
+    max-height: 100px;
+    border-spacing: 20px;
+	h1{
+		font-size: 20px;
+	}
+}
+div.span6{
+	text-align: center;
+	padding-bottom: 15px;
 }
