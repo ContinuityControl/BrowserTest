@@ -15,17 +15,18 @@
 @import "bootstrap-responsive";
 
 div.hero.well{ 
-	height: 150px;
-	padding-top: 20px;
-	padding-bottom: 0;
-	background-color: 808080;
-		p{
+	height: 100px;
+	padding-top: 10px;
+		h1{
+			padding-top: 0px;
+			height: 20px;
 			font-size: 15px;
 			text-align: center;
 		}
  }
- h1.title{
-		font-size: 20px;
-		padding-top: 0px;
-		font: center;
+.navbar {
+  .navbar-inner {
+    background-color: #2c2c2c;
+    background-image: none;
+  }
 }
