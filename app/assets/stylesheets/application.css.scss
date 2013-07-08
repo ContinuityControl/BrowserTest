@@ -14,7 +14,7 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
-div.btn{
+div.alert{
 	min-width: 500px;
     max-width: 500px;
     min-height:100px;
@@ -30,4 +30,7 @@ div.span6{
 }
 footer{
 	padding-left: 5%;
+}
+div.row{
+	padding-top: 3%;
 }
