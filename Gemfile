@@ -18,6 +18,14 @@ gem 'jquery-rails'
 
 gem 'bootstrap-sass'
 
+group :development do 
+	gem "sqlite3"
+end
+
+group :production do 
+	gem "pg"
+end
+
 gem 'debugger'
 
 group :doc do
