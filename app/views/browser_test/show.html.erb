@@ -1,94 +1,173 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
-<div class="row">
+      <div class="row">
 
-    <div class="span6">
-      <div class="alert grey">
-          <div>
-            <h1>User Agent</h1>
+        <div class="span6">
+          <div class="alert grey">
+            <div>
+              <h1>User Agent</h1>
               <p id="userAgent">Javascript: Disabled</p>
             </div>
+          </div>
         </div>
-   </div>
 
-  <div class="span6">
-      <div class="alert grey">
+        <div class="span6">
+          <div class="alert grey">
            <div>
-              <h1>Window Size</h1>
-                <p id="windowSize">Javascript: Disabled</p>
-            </div>
+            <h1>Window Size</h1>
+            <p id="windowSize">Javascript: Disabled</p>
+          </div>
         </div>
-      </div>
-
-      <div class="span6">
-       <div class="alert grey">
-            <div>
-              <h1>Screen Size</h1>
-               <p id="screenSize">Javascript: Disabled</p>
-            </div>
-        </div>
-      </div>
-
-      <div class="span6">
-         <div class="alert grey">
-            <div>
-              <h1>Operating System</h1>
-                <p id="os">Javascript: Disabled</p>
-            </div>
-        </div>
-      </div>
-
-      <div class="span6">
-       <div class="alert grey">
-            <div>
-              <h1>Web Browser</h1>
-              	<p id="browser">Javascript: Disabled</p>
-            </div>
-        </div>
-      </div>
-
-      <div class="span6">
-       <div class="alert grey">
-            <div>
-              <h1>Flash Enabled</h1>
-              	<p id="flashEnabled">Javascript: Disabled</p>
-            </div>
-        </div>
-      </div>
-
-      <div class="span6">
-       <div class="alert grey">
-            <div>
-              <h1>Date</h1>
-                <p id="date">Javascript: Disabled</p>
            </div>
-       </div>
-     </div>
 
-     <div class="span6">
-       <div class="alert alert-success">
-            <div>
-              <h1>IP Address</h1>
-                <p>IP Address: <%= request.remote_ip%></p>
-           </div>
-       </div>
-     </div>
-
-     <div class="span6">
+      <div class="span6">
        <div class="alert grey">
-            <div>
-              <h1>Picture</h1>
-              <p id="picture">Error</p>
-           </div>
-       </div>
-     </div>
+        <div>
+          <h1>Screen Size</h1>
+          <p id="screenSize">Javascript: Disabled</p>
+        </div>
+      </div>
+    </div>
 
     <div class="span6">
-       <div class="alert grey">
-            <div>
-              <h1>Load Javascript from control site</h1>
-              <p id="script">Error</p>
-              <script type="text/javascript" src="https://d2b75q7u5jtkag.cloudfront.net/assets/application.js"></script>
-       </div>
-     </div>
+     <div class="alert grey">
+      <div>
+        <h1>Operating System</h1>
+        <p id="os">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
 
+  <div class="span6">
+   <div class="alert grey">
+    <div>
+      <h1>Web Browser</h1>
+      <p id="browser">Javascript: Disabled</p>
+    </div>
+  </div>
+</div>
+
+  <div class="span6">
+   <div class="alert grey">
+    <div>
+      <h1>Flash Enabled</h1>
+      <p id="flashEnabled">Javascript: Disabled</p>
+    </div>
+  </div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Date</h1>
+    <p id="date">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert alert-success">
+  <div>
+    <h1>IP Address</h1>
+    <p>IP Address: <%= request.remote_ip%></p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Load data from 3rd party sites</h1>
+    <p id="3rdparty">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Load data from control site(Cloud Front)</h1>
+    <p id="continuity">Javascript: Disabled</p>
+    <script type="text/javascript" src="https://d2b75q7u5jtkag.cloudfront.net/assets/application.js"></script>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>cloudFront</h1>
+    <img id="imagecloudfront" style="display:none" src="https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png"></img>
+    <p id="cloudfront">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>newrelic</h1>
+    <img id="imagenewrelic" style="display:none" src="http://newrelic.com/assets/newrelic/logo_46.png"></img>
+    <p id="newrelic">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>live chat</h1>
+    <p id="livechatapp">Live Chat App not yet Loaded</p>
+    <script src='https://cdn.livechatinc.com/tracking.js'></script>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Continuity.Desk</h1>
+    <p id="continuity.desk">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Send Grid</h1>
+    <img id="imagesendgrid" style="display:none" src="http://assets4.sendgrid.com/mkt/assets/sendgrid_logo-8f6ec9845f58c180692f02f6cb6ec894.png"></img>
+    <p id="sendgrid">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Google Maps</h1>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={API_KEY}sensor=true"></script>
+    <p id="googlemaps">Javascript: Disabled</p>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>Google Analytics</h1>
+    <p id="googleA">Javascript: Disabled</p>
+    <script src="https://ssl.google-analytics.com/ga.js"></script>
+  </div>
+</div>
+</div>
+
+<div class="span6">
+ <div class="alert grey">
+  <div>
+    <h1>http://www.google.com/jsapi</h1>
+    <p id="jsapi">Javascript: Disabled</p>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  </div>
+</div>
+</div>
 </div>
