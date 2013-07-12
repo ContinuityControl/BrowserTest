@@ -162,6 +162,7 @@ $(function(){
     //continuitycontrol.assistly.com - Customer Support
 
     //continuitycontrol.desk.com - Customer Support
+    
     //control-production.s3-us-gov-west-1.amazonaws.com - GovCloud S3
     //*.livechatinc.com (include all subdomains) - Customer Support
     liveChat();
@@ -182,7 +183,15 @@ $(function(){
     //seal.qualys.com - Security scan seal
     testWithImage("#imagesealqualys","#sealqualys",89, 47);
     //seal.thawte.com - SSL verification seal
-    if($.get("https://seal.thawte.com/getthawteseal") == undefined)
+    $.ajax({
+
+        url: 'https://seal.thawte.com/getthawteseal',
+        type: 'GET',
+        crossDomain: true,
+        success: function() { },
+        error: function() { },
+
+    });
     //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
     if(control.datepicker_opts === undefined){
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
@@ -192,6 +201,7 @@ $(function(){
 		replaceStyle("#cloudfrontd2");
 	}
     //s3.amazonaws.com/continuity-production - Content CDN and secure file downloads
+    
     //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
 	
 });
