@@ -165,7 +165,7 @@ $(function(){
     //*.livechatinc.com (include all subdomains) - Customer Support
     liveChat();
     //sendgrid.continuity.net - E-Mail and communication services
-    testWithImage(["#imagesendgrid", "#sendgrid", 160, 45]);
+    
     //maps-api-ssl.google.com - Google Maps
     googleMaps();
     //continuity.app4.hubspot.com - Site-usage analytics
