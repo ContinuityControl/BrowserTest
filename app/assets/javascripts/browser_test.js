@@ -125,7 +125,7 @@ $(function(){
 		replaceStyleFalse("#date");
 	}
 	
-	// loading data from continuity site
+	//Load data from control site(Cloud Front) https://d2b75q7u5jtkag.cloudfront.net/assets/application.js
 
 	if(control.datepicker_opts != undefined && $("#image1").width() == 181 && $("#image1").height() == 74){
 		$("#continuity").text("Javascript: loaded  Picture: loaded");
@@ -146,32 +146,52 @@ $(function(){
 
 
 	//loading data from 3rd party sites 
-	if(control.datepicker_opts === undefined){
+
+
+   	//beacon-1.newrelic.com - JavaScript performance monitoring
+   	if(typeof NREUMQ === 'undefined'){
+		$("#newrelic").text(" not loaded");
+		replaceStyleFalse("#newrelic");
+	}else{
+		$("#newrelic").text("loaded ");
+		replaceStyle("#newrelic");
+	}
+   	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
+   	testWithImage(["#imagecloudfront","#cloudfront",910, 44])
+    //continuitycontrol.assistly.com - Customer Support
+
+    //continuitycontrol.desk.com - Customer Support
+    //control-production.s3-us-gov-west-1.amazonaws.com - GovCloud S3
+    //*.livechatinc.com (include all subdomains) - Customer Support
+    liveChat();
+    //sendgrid.continuity.net - E-Mail and communication services
+    testWithImage(["#imagesendgrid", "#sendgrid", 160, 45]);
+    //maps-api-ssl.google.com - Google Maps
+    googleMaps();
+    //continuity.app4.hubspot.com - Site-usage analytics
+
+    //google.com/jsapi - Google for CDN of JS libraries
+    googlejsapi();
+    //ssl.google-analytics.com - Site-usage analytics
+    googleAnalytics();
+    //maps.googleapis.com - Google APIs
+    //maps.gstatic.com - Google APIs
+    //mts0.googleapis.com - Google APIs
+    //mts1.googleapis.com - Google APIs
+    //seal.qualys.com - Security scan seal
+    testWithImage(["#imagesealqualys","#sealqualys",89, 47]);
+    //seal.thawte.com - SSL verification seal
+
+    //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
+    if(control.datepicker_opts === undefined){
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
 		replaceStyleFalse("#cloudfrontd2");
 	}else{
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
 		replaceStyle("#cloudfrontd2");
 	}
-
-	testWithImage(["#imagecloudfront","#cloudfront",910, 44])
-	testWithImage(["#imagenewrelic", "#newrelic", 348, 92]);
-	testWithImage(["#imagesendgrid", "#sendgrid", 160, 45]);
+    //s3.amazonaws.com/continuity-production - Content CDN and secure file downloads
+    //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
+    //code.google.com/p/swfobject/ - In-page Flash media support
 	
-	/*
-	var doc = document.documentElement.outerHTML();
-	if(doc.getElementsByTagName("flash") == undefined){
-		$("#continuity.desk").text("Loaded");
-		replaceStyle("#continuity.desk");
-	}
-	else{
-		$("#continuity.desk").text("error");
-		replaceStyleFalse("#continuity.desk");
-	}
-	*/
-	
-	liveChat();
-	googleAnalytics();
-	googleMaps();
-	googlejsapi();
 });
