@@ -34,14 +34,14 @@ function googlejsapi(){
 		replaceStyle("#jsapi");
     }	
 }
-function testWithImage(arguments){
-	if($(arguments[0]).width() == arguments[2] && $(arguments[0]).height() == arguments[3]){
-		$(arguments[1]).text("Loaded");
-		replaceStyle(arguments[1]);
+function testWithImage(imageID, textID ,width, height){
+	if($(imageID).width() == width && $(imageID).height() == height){
+		$(textID).text("Loaded");
+		replaceStyle(textID);
 	}
 	else{
-		$(arguments[1]).text("error");
-		replaceStyleFalse(arguments[1]);
+		$(textID).text("error");
+		replaceStyleFalse(textID);
 	}
 }
 function replaceStyle(domID)
@@ -55,8 +55,10 @@ function replaceStyleFalse(domID)
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
+//Live Chat 
 var __lc = {};
     __lc.license = 1089691;
+//Google Analytics 
 var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-31337942-1']);
     _gaq.push(['_trackPageview']);
@@ -115,7 +117,6 @@ $(function(){
 		$("#flashEnabled").text("Flash Disabled");
 		replaceStyleFalse("#flashEnabled");
 	}
-	
 	if(Date() != undefined){
 		$("#date").text(Date());
 		replaceStyle("#date");
@@ -157,7 +158,7 @@ $(function(){
 		replaceStyle("#newrelic");
 	}
    	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-   	testWithImage(["#imagecloudfront","#cloudfront",910, 44])
+   	testWithImage("#imagecloudfront","#cloudfront",910, 44)
     //continuitycontrol.assistly.com - Customer Support
 
     //continuitycontrol.desk.com - Customer Support
@@ -179,9 +180,9 @@ $(function(){
     //mts0.googleapis.com - Google APIs
     //mts1.googleapis.com - Google APIs
     //seal.qualys.com - Security scan seal
-    testWithImage(["#imagesealqualys","#sealqualys",89, 47]);
+    testWithImage("#imagesealqualys","#sealqualys",89, 47);
     //seal.thawte.com - SSL verification seal
-
+    if($.get("https://seal.thawte.com/getthawteseal") == undefined)
     //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
     if(control.datepicker_opts === undefined){
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
@@ -192,6 +193,5 @@ $(function(){
 	}
     //s3.amazonaws.com/continuity-production - Content CDN and secure file downloads
     //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
-    //code.google.com/p/swfobject/ - In-page Flash media support
 	
 });
