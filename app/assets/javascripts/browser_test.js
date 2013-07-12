@@ -146,6 +146,13 @@ $(function(){
 
 
 	//loading data from 3rd party sites 
+	if(control.datepicker_opts === undefined){
+		$("#cloudfrontd2").text("Javascript: d2 loaded ");
+		replaceStyleFalse("#cloudfrontd2");
+	}else{
+		$("#cloudfrontd2").text("Javascript: d2 loaded ");
+		replaceStyle("#cloudfrontd2");
+	}
 
 	testWithImage(["#imagecloudfront","#cloudfront",910, 44])
 	testWithImage(["#imagenewrelic", "#newrelic", 348, 92]);
