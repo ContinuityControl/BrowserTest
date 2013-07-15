@@ -28,8 +28,7 @@
               <img id="image1" src="https://d2b75q7u5jtkag.cloudfront.net/assets/cc_logos/CC_logo_white-230aa004e30cf403e251042f65d3a798.png"></img>
             </a>
             <div class="input-append pull-right" style="padding-top: 1.75%; padding-right: 2%;">
-              <input class="span2" id="appendedInputButton" type="text" placeholder="Your Email Address" name="email">
-              <%= form_submission 'Send', send_data(email), :class => 'btn' %>
+              <%= render "user_data/form" %> 
             </div>
             <div class="nav-collapse collapse">
               <span class="help-block pull-right" style="line-height: 1px; font-size: 15px; color=#FFFFFF;">

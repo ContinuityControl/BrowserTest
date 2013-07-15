@@ -1,48 +1,17 @@
 class UserDataController < ApplicationController
   before_action :set_user_datum, only: [:show, :edit, :update, :destroy]
 
-  # GET /user_data
-  def index
-    @user_data = UserDatum.all
-  end
-
-  # GET /user_data/1
-  def show
-  end
-
-  # GET /user_data/new
-  def new
-    @user_datum = UserDatum.new
-  end
-
-  # GET /user_data/1/edit
-  def edit
-  end
-
   # POST /user_data
   def create
     @user_datum = UserDatum.new(user_datum_params)
 
     if @user_datum.save
-      redirect_to @user_datum, notice: 'User datum was successfully created.'
+      #Mailer.send_data(@user_datum.email_address).deliver
+      redirect_to root_path, notice: 'User datum was successfully submitted'
     else
-      render action: 'new'
+      redirect_to root_path, notice: 'please try again'
+      #display error message
     end
-  end
-
-  # PATCH/PUT /user_data/1
-  def update
-    if @user_datum.update(user_datum_params)
-      redirect_to @user_datum, notice: 'User datum was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
-
-  # DELETE /user_data/1
-  def destroy
-    @user_datum.destroy
-    redirect_to user_data_url, notice: 'User datum was successfully destroyed.'
   end
 
   private
@@ -53,6 +22,7 @@ class UserDataController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_datum_params
-      params.require(:user_datum).permit(:user_agent_string, :window_size)
+      params.require(:user_datum).permit(:email_address, :user_agent_string, :window_size, :screen_size, :operating_system, :web_browser, :flash_enabled,
+      :date, :ip_address)
     end
 end

@@ -60,78 +60,92 @@ var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-31337942-1']);
     _gaq.push(['_trackPageview']);
 // honey badger
-Honeybadger.configure({
-  api_key: 'your public api key'
-});
+//Honeybadger.configure({
+ // api_key: 'your public api key'
+//});
 
-try {
-  ...error producing code...
-} catch(e) {
-  Honeybadger.notify(e);
-}
+//try {
+ // ...error producing code...
+//} catch(e) {
+  //Honeybadger.notify(e);
+//}
 
 $(function(){
 	//loading data from client
 	if(navigator.userAgent != undefined){
 		$("#userAgent").text(navigator.userAgent);
 		replaceStyle("#userAgent");
+		$("#user_datum_user_agent_string").val(navigator.userAgent);
 	}
 	else{
 		replaceStyleFalse("#userAgent");
 		$("#userAgent").text("User Agent undefined");
+		$("#user_datum_user_agent_string").val("User Agent undefined");
 	}	
 	
 	if(window.session.device.viewport.width != undefined && window.session.device.viewport.height != undefined){
 		$("#windowSize").text( window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
 		replaceStyle("#windowSize");
+		$("#user_datum_window_size").val(window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
 	}
 	else{
 		$("#windowSize").text("Window size undefined");
 		replaceStyleFalse("#windowSize");
+		$("#user_datum_window_size").val("Window size undefined");
 	}
 	
 	if(window.session.device.screen.width != undefined && window.session.device.screen.height != undefined){
 		$("#screenSize").text(window.session.device.screen.width + " x " + window.session.device.screen.height);
 		replaceStyle("#screenSize");
+		$("#user_datum_screen_size").val(window.session.device.screen.width + " x " + window.session.device.screen.height);
 	}
 	else{
 		$("#screenSize").text("Screen size undefined");
 		replaceStyleFalse("#screenSize");
+		$("#user_datum_screen_size").val("Screen size undefined");
 	}
 	
 	if(window.session.browser.os != undefined){
 		$("#os").text(window.session.browser.os);
 		replaceStyle("#os");
+		$("#user_datum_operating_system").val(window.session.browser.os);
 	}
 	else{
-		$("#os").text("os undefined");
+		$("#os").text("OS undefined");
 		replaceStyleFalse("#os");
+		$("#user_datum_operating_system").val("OS undefined");
 	}
 	
 	if(window.session.browser.browser != undefined && window.session.browser.version != undefined){
 		$("#browser").text(window.session.browser.browser + " Version: " + window.session.browser.version);
 		replaceStyle("#browser");
+		$("#user_datum_web_browser").val(window.session.browser.browser + " Version: " + window.session.browser.version);
 	}
 	else{
 		$("#browser").text("Browser undefined");
 		replaceStyleFalse("#browser");
+		$("#user_datum_web_browser").val("Browser undefined");
 	}
 	
 	if(window.session.plugins.flash == true && window.session.plugins.flash != undefined){
 		$("#flashEnabled").text(window.session.plugins.flash);
 		replaceStyle("#flashEnabled");
+		$("#user_datum_flash_enabled").val(window.session.plugins.flash);
 	}
 	else{
-		$("#flashEnabled").text("Flash Disabled");
+		$("#flashEnabled").text("False");
 		replaceStyleFalse("#flashEnabled");
+		$("#user_datum_flash_enabled").val("False");
 	}
 	if(Date() != undefined){
 		$("#date").text(Date());
 		replaceStyle("#date");
+		$("#user_datum_date").val(Date());
 	}
 	else{
 		$("#date").text("Date undefined");
 		replaceStyleFalse("#date");
+		$("#user_datum_date").val("Date undefined");
 	}
 	
 	//Load data from control site(Cloud Front) https://d2b75q7u5jtkag.cloudfront.net/assets/application.js
@@ -139,6 +153,7 @@ $(function(){
 	if(control.datepicker_opts != undefined && $("#image1").width() == 181 && $("#image1").height() == 74){
 		$("#continuity").text("Javascript: loaded  Picture: loaded");
 		replaceStyle("#continuity");
+
 	}
 	else if($("#image1").width() == 181 && $("#image1").height() == 74 && control.datepicker_opts == undefined){
 		$("#continuity").text("Javescript: failed  Picture: loaded");
@@ -184,7 +199,7 @@ $(function(){
     googlejsapi();
     //ssl.google-analytics.com - Site-usage analytics
     googleAnalytics();
-    
+
     //maps.googleapis.com - Google APIs
     //maps.gstatic.com - Google APIs
     //mts0.googleapis.com - Google APIs
