@@ -203,5 +203,7 @@ $(function(){
     //s3.amazonaws.com/continuity-production - Content CDN and secure file downloads
     
     //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
+
+    //Honey badger
 	
 });

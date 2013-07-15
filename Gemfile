@@ -19,6 +19,8 @@ gem 'bootstrap-sass'
 
 gem 'newrelic_rpm'
 
+gem 'honeybadger'
+
 group :development do 
 	gem "sqlite3"
 end
