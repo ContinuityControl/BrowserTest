@@ -55,13 +55,21 @@ function replaceStyleFalse(domID)
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
-//Live Chat 
-var __lc = {};
-    __lc.license = 1089691;
 //Google Analytics 
 var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-31337942-1']);
     _gaq.push(['_trackPageview']);
+// honey badger
+Honeybadger.configure({
+  api_key: 'your public api key'
+});
+
+try {
+  ...error producing code...
+} catch(e) {
+  Honeybadger.notify(e);
+}
+
 $(function(){
 	//loading data from client
 	if(navigator.userAgent != undefined){
@@ -176,10 +184,13 @@ $(function(){
     googlejsapi();
     //ssl.google-analytics.com - Site-usage analytics
     googleAnalytics();
+    
     //maps.googleapis.com - Google APIs
     //maps.gstatic.com - Google APIs
     //mts0.googleapis.com - Google APIs
     //mts1.googleapis.com - Google APIs
+
+
     //seal.qualys.com - Security scan seal
     testWithImage("#imagesealqualys","#sealqualys",89, 47);
     //seal.thawte.com - SSL verification seal
@@ -189,7 +200,7 @@ $(function(){
         type: 'GET',
         crossDomain: true,
         success: function() { },
-        error: function() { },
+        error: function() { },// add in correct erros 
 
     });
     //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
@@ -205,5 +216,12 @@ $(function(){
     //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
 
     //Honey badger
+    if(typeof Honeybadger === 'undefined'){
+    	$("#honeyBadger").text("not loaded");
+		replaceStyleFalse("#honeyBadger");
+    } else {
+    	$("#honeyBadger").text("Loaded");
+		replaceStyle("#honeyBadger");
+    }
 	
 });
