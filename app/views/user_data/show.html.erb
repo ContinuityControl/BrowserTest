@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User agent string:</strong>
+  <%= @user_datum.user_agent_string %>
+</p>
+
+<p>
+  <strong>Window size:</strong>
+  <%= @user_datum.window_size %>
+</p>
+
+<%= link_to 'Edit', edit_user_datum_path(@user_datum) %> |
+<%= link_to 'Back', user_data_path %>

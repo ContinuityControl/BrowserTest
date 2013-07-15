@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_agent_string: MyString
+  window_size: MyString
+
+two:
+  user_agent_string: MyString
+  window_size: MyString

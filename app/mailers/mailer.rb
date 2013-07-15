@@ -1,7 +1,5 @@
 class Mailer < ActionMailer::Base
-  default from: "from@example.com"
-
- def send_data()
- 	mail(to: "email@example.com", subject: "Sending my Data to continuity")
+ def send_data(email)
+ 	mail(to: "send@data.com" ,from: email, subject: "Sending my Data to continuity")
  end
 end
