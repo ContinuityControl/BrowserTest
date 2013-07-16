@@ -1,19 +1,19 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <% if flash[:notice] %>
-      <div class="row">
-        <div class"span9">
-          <div id="notice-success" class="alert alert-success">
-            <h1 id="notice"><%= flash[:notice] %></h1>
+      <div class="row" id="flash">
+        <div class"span12">
+            <div class="alert alert-success text-center" id="notice">
+              <h4><%= flash[:notice] %></h4>
+            </div>
           </div>
         </div>
-      </div>
       <% elsif flash[:error] %>
-      <div class="row">
-        <div class="span9">
-         <div id="notice-error" class="alert alert-error">
-           <h1 id="error" ><%= flash[:error] %></h1>
-         </div>
+      <div class="row" id="flash">
+        <div class="span12">
+           <div class="alert alert-error text-center" id="error">
+            <h4><%= flash[:error] %></h4>
+           </div>
        </div>
      </div>
       <% else %>
@@ -21,7 +21,7 @@
       <% end %>
       <div class="row">
         <div class="span6">
-          <div class="alert grey">
+          <div class="alert continuity grey">
             <div>
               <h1>User Agent</h1>
               <p id="userAgent">Javascript: Disabled</p>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="span6">
-          <div class="alert grey">
+          <div class="alert continuity grey">
            <div>
             <h1>Window Size</h1>
             <p id="windowSize">Javascript: Disabled</p>
@@ -39,7 +39,7 @@
            </div>
 
       <div class="span6">
-       <div class="alert grey">
+       <div class="alert continuity grey">
         <div>
           <h1>Screen Size</h1>
           <p id="screenSize">Javascript: Disabled</p>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="span6">
-     <div class="alert grey">
+     <div class="alert continuity grey">
       <div>
         <h1>Operating System</h1>
         <p id="os">Javascript: Disabled</p>
@@ -57,7 +57,7 @@
   </div>
 
   <div class="span6">
-   <div class="alert grey">
+   <div class="alert continuity grey">
     <div>
       <h1>Web Browser</h1>
       <p id="browser">Javascript: Disabled</p>
@@ -66,7 +66,7 @@
 </div>
 
   <div class="span6">
-   <div class="alert grey">
+   <div class="alert continuity grey">
     <div>
       <h1>Flash Enabled</h1>
       <p id="flashEnabled">Javascript: Disabled</p>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>Date</h1>
     <p id="date">Javascript: Disabled</p>
@@ -84,7 +84,7 @@
 </div>
 
 <div class="span6">
- <div class="alert alert-success">
+ <div class="alert continuity alert-success">
   <div>
     <h1>IP Address</h1>
     <p>IP Address: <%= request.remote_ip%></p>
@@ -93,7 +93,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>Load data from 3rd party sites</h1>
     <p id="3rdparty">Javascript: Disabled</p>
@@ -102,7 +102,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>Load data from control site(Cloud Front)</h1>
     <p id="continuity">Javascript: Disabled</p>
@@ -113,7 +113,7 @@
 
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>beacon-1.newrelic.com - JavaScript performance monitoring</h1>
     <p id="newrelic">Javascript: Disabled</p>
@@ -123,7 +123,7 @@
 
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring</h1>
     <img id="imagecloudfront" style="display:none" src="https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png"></img>
@@ -133,7 +133,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>continuitycontrol.assistly.com - Customer Support</h1>
     <p id="continuity.assistly">Javascript: Disabled</p>
@@ -142,7 +142,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>continuitycontrol.desk.com - Customer Support</h1>
     <p id="continuity.desk">Javascript: Disabled</p>
@@ -151,7 +151,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>control-production.s3-us-gov-west-1.amazonaws.com - GovCloud S3</h1>
     <p id="govcloud">Javascript: Disabled</p>
@@ -160,11 +160,9 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>*.livechatinc.com (include all subdomains) - Customer Support- </h1>
-
-
     <p id="livechatapp">Live Chat App not yet Loaded</p>
     <script type="text/javascript">
       var __lc = {};
@@ -177,7 +175,7 @@
 
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>sendgrid.continuity.net - E-Mail and communication services-</h1>
     <p id="sendgrid">Javascript: Disabled</p>
@@ -186,7 +184,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>maps-api-ssl.google.com - Google Maps</h1>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -196,7 +194,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>continuity.app4.hubspot.com - Site-usage analytics</h1>
     <p id="hubspot">Javascript: Disabled</p>
@@ -205,7 +203,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>google.com/jsapi - Google for CDN of JS libraries</h1>
     <p id="jsapi">Javascript: Disabled</p>
@@ -215,7 +213,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>ssl.google-analytics.com - Site-usage analytics</h1>
     <p id="googleA">Javascript: Disabled</p>
@@ -225,7 +223,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>maps.googleapis.com - Google APIs</h1>
     <p id="mapsApi">Javascript: Disabled</p>
@@ -234,7 +232,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>maps.gstatic.com - Google APIs</h1>
     <p id="gstaticApi">Javascript: Disabled</p>
@@ -243,7 +241,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>mts0.googleapis.com - Google APIs</h1>
     <p id="mts0Api">Javascript: Disabled</p>
@@ -252,7 +250,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>mts1.googleapis.com - Google APIs</h1>
     <p id="mts1Api">Javascript: Disabled</p>
@@ -261,7 +259,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>seal.qualys.com - Security scan seal</h1>
     <p id="sealqualys">Javascript: Disabled</p>
@@ -271,7 +269,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>seal.thawte.com - SSL verification seal</h1>
     <p id="sealthawte">Javascript: Disabled</p>
@@ -281,7 +279,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN</h1>
     <p id="cloudfrontd2">Javascript: Disabled</p>
@@ -290,7 +288,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>s3.amazonaws.com/continuity-production - Content CDN and secure file downloads</h1>
     <p id="s3amazonaws">Javascript: Disabled</p>
@@ -299,7 +297,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>continuity-production.s3.amazonaws.com - Content CDN and secure file downloads</h1>
     <p id="cproduction">Javascript: Disabled</p>
@@ -308,7 +306,7 @@
 </div>
 
 <div class="span6">
- <div class="alert grey">
+ <div class="alert continuity grey">
   <div>
     <h1>Heoney Badger</h1>
     <p id="honeyBadger">Javascript: Disabled</p>

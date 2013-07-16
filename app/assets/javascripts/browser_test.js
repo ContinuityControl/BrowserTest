@@ -71,11 +71,9 @@ var _gaq = _gaq || [];
 //}
 
 $(function(){
-	// notices after submitting
-	$('#error').fadeOut(4000);
-	$('#notice-error').fadeOut(4000);
-	$('#notice-success').fadeOut(4000);
-	$('#notice').fadeOut(4000);
+	//fades notices after appearing	
+	$('#flash').fadeOut(4000);
+
 	//changing btn to send data to continuity
 	$('[name="commit"]').val("Send Data");
 	$('[name="commit"]').addClass("btn");

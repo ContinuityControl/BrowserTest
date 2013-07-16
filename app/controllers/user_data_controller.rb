@@ -10,7 +10,7 @@ class UserDataController < ApplicationController
       flash[:notice] = 'Thank You for submitting your data.'
       redirect_to root_path
     else
-      flash[:notice] = 'Invalid Email Address'
+      flash[:error] = 'Invalid Email Address'
       redirect_to root_path 
     end
   end
