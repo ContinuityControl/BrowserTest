@@ -6,11 +6,12 @@ class UserDataController < ApplicationController
     @user_datum = UserDatum.new(user_datum_params)
 
     if @user_datum.save
-      #Mailer.send_data(@user_datum.email_address).deliver
-      redirect_to root_path, notice: 'User datum was successfully submitted'
+      Mailer.send_data(@user_datum).deliver
+      flash[:notice] = 'Thank You for submitting your data.'
+      redirect_to root_path
     else
-      redirect_to root_path, notice: 'please try again'
-      #display error message
+      flash[:notice] = 'Invalid Email Address'
+      redirect_to root_path 
     end
   end
 

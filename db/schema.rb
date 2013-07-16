@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20130715165219) do
     t.string   "flash_enabled"
     t.string   "date"
     t.string   "ip_address"
+    t.string   "honeypot"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -71,6 +71,14 @@ var _gaq = _gaq || [];
 //}
 
 $(function(){
+	// notices after submitting
+	$('#error').fadeOut(4000);
+	$('#notice-error').fadeOut(4000);
+	$('#notice-success').fadeOut(4000);
+	$('#notice').fadeOut(4000);
+	//changing btn to send data to continuity
+	$('[name="commit"]').val("Send Data");
+	$('[name="commit"]').addClass("btn");
 	//loading data from client
 	if(navigator.userAgent != undefined){
 		$("#userAgent").text(navigator.userAgent);
@@ -147,7 +155,6 @@ $(function(){
 		replaceStyleFalse("#date");
 		$("#user_datum_date").val("Date undefined");
 	}
-	
 	//Load data from control site(Cloud Front) https://d2b75q7u5jtkag.cloudfront.net/assets/application.js
 
 	if(control.datepicker_opts != undefined && $("#image1").width() == 181 && $("#image1").height() == 74){

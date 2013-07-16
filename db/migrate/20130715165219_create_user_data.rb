@@ -10,7 +10,7 @@ class CreateUserData < ActiveRecord::Migration
       t.string :flash_enabled
       t.string :date
       t.string :ip_address
-
+      t.string :honeypot
 
       t.timestamps
     end

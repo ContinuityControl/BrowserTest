@@ -48,3 +48,21 @@ footer{
 div.row{
 	padding-top: 3%;
 }
+div.alert.alert-success#notice-success{
+	padding-top: 1%;
+	min-width: 1000px;
+    max-width: 1000px;
+    min-height:30px;
+    max-height: 30px;
+    text-align: center;
+    border-left: 111px;
+}
+div.alert.alert-error#notice-error{
+	padding-top: 1%;
+	min-width: 500px;
+    max-width: 500px;
+    min-height:70px;
+    max-height: 70px;
+    text-align: center;
+    border-left: 111px;
+}

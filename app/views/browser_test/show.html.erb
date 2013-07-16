@@ -1,6 +1,25 @@
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="row">
 
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <% if flash[:notice] %>
+      <div class="row">
+        <div class"span9">
+          <div id="notice-success" class="alert alert-success">
+            <h1 id="notice"><%= flash[:notice] %></h1>
+          </div>
+        </div>
+      </div>
+      <% elsif flash[:error] %>
+      <div class="row">
+        <div class="span9">
+         <div id="notice-error" class="alert alert-error">
+           <h1 id="error" ><%= flash[:error] %></h1>
+         </div>
+       </div>
+     </div>
+      <% else %>
+
+      <% end %>
+      <div class="row">
         <div class="span6">
           <div class="alert grey">
             <div>
