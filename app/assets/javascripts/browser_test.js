@@ -1,37 +1,45 @@
 function googleAnalytics(){
-	if (typeof _gat ===  'undefined') { //TODO undefined
+	if (typeof _gat ===  'undefined') {
     	$("#googleA").text("not Loaded");
 		replaceStyleFalse("#googleA");
+		other_site = other_site + ', ' + "Google Analytics: Not Loaded"
     } else {
     	$("#googleA").text("Loaded");
 		replaceStyle("#googleA");
+		other_site = other_site + ', ' + "Google Analytics: Not Loaded"
     }
 }
 function liveChat() {
     if (typeof LC_API === 'undefined') {
     	$("#livechatapp").text("not Loaded");
 		replaceStyleFalse("#livechatapp");
+		other_site = other_site + ', ' + "LiveChat: Not Loaded"
     } else {
         $("#livechatapp").text("Loaded");
 		replaceStyle("#livechatapp");
+		other_site = other_site + ', ' + "LiveChat: Loaded"
     }
 }
 function googleMaps(){
 	if (typeof mapOptions === 'undefined') {
     	$("#googlemaps").text("not Loaded");
 		replaceStyleFalse("#googlemaps");
+		other_site = other_site + ', ' + "Google Maps: Not Loaded"
     } else {
         $("#googlemaps").text("Loaded");
 		replaceStyle("#googlemaps");
+		other_site = other_site + ', ' + "Google Maps: Loaded"
     }	
 }
 function googlejsapi(){
 	if (typeof google.loader === 'undefined') {
     	$("#jsapi").text("not Loaded");
 		replaceStyleFalse("#jsapi");
+		other_site = other_site + ', ' + "jsapi: Not Loaded"
     } else {
         $("#jsapi").text("Loaded");
 		replaceStyle("#jsapi");
+		other_site = other_site + ', ' + "jsapi: Loaded"
     }	
 }
 function testWithImage(imageID, textID ,width, height){
@@ -70,9 +78,10 @@ var _gaq = _gaq || [];
   //Honeybadger.notify(e);
 //}
 
+var other_site = "";
 $(function(){
 	//fades notices after appearing	
-	//$('#flash').fadeOut(4000);
+	$('#flash').fadeOut(4000);
 
 	//changing btn to send data to continuity
 	$('[name="commit"]').val("Send Data");
@@ -158,19 +167,23 @@ $(function(){
 	if(control.datepicker_opts != undefined && $("#image1").width() == 181 && $("#image1").height() == 74){
 		$("#continuity").text("Javascript: loaded  Picture: loaded");
 		replaceStyle("#continuity");
+		$("#user_datum_continuity_site").val("Continuity Site: Javascript: loaded  Picture: loaded");
 
 	}
 	else if($("#image1").width() == 181 && $("#image1").height() == 74 && control.datepicker_opts == undefined){
 		$("#continuity").text("Javescript: failed  Picture: loaded");
 		replaceStyleFalse("#continuity");
+		$("#user_datum_continuity_site").val("Continuity Site: Javescript: failed  Picture: loaded");
 	}
 	else if($("#image1").width() != 181 && $("#image1").height() != 74 && control.datepicker_opts != undefined){
 		$("#continuity").text("Javescript: loaded  Picture: failed");
 		replaceStyleFalse("#continuity");
+		$("#user_datum_continuity_site").val("Continuity Site: Javescript: loaded  Picture: failed");
 	}
 	else{
 		$("#continuity").text("Javescript: failed  Picture: failed");
 		replaceStyleFalse("#continuity");
+		$("#user_datum_continuity_site").val("Continuity Site: Javescript: failed  Picture: failed");
 	}
 
 
@@ -181,9 +194,11 @@ $(function(){
    	if(typeof NREUMQ === 'undefined'){
 		$("#newrelic").text(" not loaded");
 		replaceStyleFalse("#newrelic");
+		other_site = other_site + ', ' + "NewRelic: Not Loaded"
 	}else{
 		$("#newrelic").text("loaded ");
 		replaceStyle("#newrelic");
+		other_site = other_site + ', ' + "NewRelic: Loaded"
 	}
    	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
    	testWithImage("#imagecloudfront","#cloudfront",910, 44)
@@ -214,6 +229,7 @@ $(function(){
     //seal.qualys.com - Security scan seal
     testWithImage("#imagesealqualys","#sealqualys",89, 47);
     //seal.thawte.com - SSL verification seal
+    /*
     $.ajax({
 
         url: 'https://seal.thawte.com/getthawteseal',
@@ -223,19 +239,23 @@ $(function(){
         error: function() { },// add in correct erros 
 
     });
+    */
     //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
-    if(control.datepicker_opts === undefined){
+    if(typeof control.datepicker_opts === 'undefined'){
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
 		replaceStyleFalse("#cloudfrontd2");
+		other_site = other_site + ', ' + "d2b75q7u5jtkag.cloudfront.net: Not Loaded"
 	}else{
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
 		replaceStyle("#cloudfrontd2");
+		other_site = other_site + ', ' + "d2b75q7u5jtkag.cloudfront.net: Loaded"
 	}
     //s3.amazonaws.com/continuity-production - Content CDN and secure file downloads
     
     //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
 
     //Honey badger
+    /*
     if(typeof Honeybadger === 'undefined'){
     	$("#honeyBadger").text("not loaded");
 		replaceStyleFalse("#honeyBadger");
@@ -243,5 +263,6 @@ $(function(){
     	$("#honeyBadger").text("Loaded");
 		replaceStyle("#honeyBadger");
     }
-	
+	*/
+	$("#user_datum_other_sites").val(other_site);
 });

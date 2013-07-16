@@ -11,6 +11,8 @@ class CreateUserData < ActiveRecord::Migration
       t.string :date
       t.string :ip_address
       t.string :honeypot
+      t.string :continuity_site
+      t.string :other_sites
 
       t.timestamps
     end
