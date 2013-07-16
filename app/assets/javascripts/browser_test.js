@@ -72,7 +72,7 @@ var _gaq = _gaq || [];
 
 $(function(){
 	//fades notices after appearing	
-	$('#flash').fadeOut(4000);
+	//$('#flash').fadeOut(4000);
 
 	//changing btn to send data to continuity
 	$('[name="commit"]').val("Send Data");
