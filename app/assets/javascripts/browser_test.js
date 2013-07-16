@@ -3,6 +3,7 @@ function googleAnalytics(){
     	$("#googleA").text("not Loaded");
 		replaceStyleFalse("#googleA");
 		other_site = other_site + ', ' + "Google Analytics: Not Loaded"
+		other_sites_display = other_sites_display + ', ' + "Google Analytics: Not Loaded"
     } else {
     	$("#googleA").text("Loaded");
 		replaceStyle("#googleA");
@@ -14,6 +15,7 @@ function liveChat() {
     	$("#livechatapp").text("not Loaded");
 		replaceStyleFalse("#livechatapp");
 		other_site = other_site + ', ' + "LiveChat: Not Loaded"
+		other_sites_display = other_sites_display + ', ' + "LiveChat: Not Loaded"
     } else {
         $("#livechatapp").text("Loaded");
 		replaceStyle("#livechatapp");
@@ -24,11 +26,12 @@ function googleMaps(){
 	if (typeof mapOptions === 'undefined') {
     	$("#googlemaps").text("not Loaded");
 		replaceStyleFalse("#googlemaps");
-		other_site = other_site + ', ' + "Google Maps: Not Loaded"
+		//other_site = other_site + ', ' + "Google Maps: Not Loaded"
+		//other_sites_display = other_sites_display + ', ' + "Google Maps: Not Loaded"
     } else {
         $("#googlemaps").text("Loaded");
 		replaceStyle("#googlemaps");
-		other_site = other_site + ', ' + "Google Maps: Loaded"
+		//other_site = other_site + ', ' + "Google Maps: Loaded"
     }	
 }
 function googlejsapi(){
@@ -36,20 +39,24 @@ function googlejsapi(){
     	$("#jsapi").text("not Loaded");
 		replaceStyleFalse("#jsapi");
 		other_site = other_site + ', ' + "jsapi: Not Loaded"
+		other_sites_display = other_sites_display + ', ' + "jsapi: Not Loaded"
     } else {
         $("#jsapi").text("Loaded");
 		replaceStyle("#jsapi");
 		other_site = other_site + ', ' + "jsapi: Loaded"
     }	
 }
-function testWithImage(imageID, textID ,width, height){
+function testWithImage(imageID, textID ,width, height, title){
 	if($(imageID).width() == width && $(imageID).height() == height){
 		$(textID).text("Loaded");
 		replaceStyle(textID);
+		other_site = other_site + ', ' + title + ": Loaded"
 	}
 	else{
 		$(textID).text("error");
 		replaceStyleFalse(textID);
+		other_site = other_site + ', ' + title + ": Not Loaded"
+		other_sites_display = other_sites_display + ', ' + title + ": Not Loaded"
 	}
 }
 function replaceStyle(domID)
@@ -79,6 +86,7 @@ var _gaq = _gaq || [];
 //}
 
 var other_site = "";
+var other_sites_display = "";
 $(function(){
 	//fades notices after appearing	
 	$('#flash').fadeOut(4000);
@@ -194,14 +202,15 @@ $(function(){
    	if(typeof NREUMQ === 'undefined'){
 		$("#newrelic").text(" not loaded");
 		replaceStyleFalse("#newrelic");
-		other_site = other_site + ', ' + "NewRelic: Not Loaded"
+		other_site = other_site + ', ' + "NewRelic: Not Loaded";
+		other_sites_display = "NewRelic: Not Loaded";
 	}else{
 		$("#newrelic").text("loaded ");
 		replaceStyle("#newrelic");
 		other_site = other_site + ', ' + "NewRelic: Loaded"
 	}
    	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-   	testWithImage("#imagecloudfront","#cloudfront",910, 44)
+   	testWithImage("#imagecloudfront","#cloudfront",910, 44, "Cloud Front")
     //continuitycontrol.assistly.com - Customer Support
 
     //continuitycontrol.desk.com - Customer Support
@@ -227,7 +236,7 @@ $(function(){
 
 
     //seal.qualys.com - Security scan seal
-    testWithImage("#imagesealqualys","#sealqualys",89, 47);
+    testWithImage("#imagesealqualys","#sealqualys",89, 47, "Security Scan Seal");
     //seal.thawte.com - SSL verification seal
     /*
     $.ajax({
@@ -244,7 +253,8 @@ $(function(){
     if(typeof control.datepicker_opts === 'undefined'){
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
 		replaceStyleFalse("#cloudfrontd2");
-		other_site = other_site + ', ' + "d2b75q7u5jtkag.cloudfront.net: Not Loaded"
+		other_site = other_site + ', ' + "d2b75q7u5jtkag.cloudfront.net: Not Loaded";
+		other_sites_display = other_sites_display +', ' + "d2b75q7u5jtkag.cloudfront.net: Not Loaded";
 	}else{
 		$("#cloudfrontd2").text("Javascript: d2 loaded ");
 		replaceStyle("#cloudfrontd2");
@@ -264,5 +274,12 @@ $(function(){
 		replaceStyle("#honeyBadger");
     }
 	*/
+	if(other_sites_display.length <= 0){
+		$("#3rdparty").text("All Sites work");
+		replaceStyle("#3rdparty");
+	} else {
+		$("#3rdparty").text(other_sites_display);
+		replaceStyleFalse("#3rdparty");
+	}
 	$("#user_datum_other_sites").val(other_site);
 });
