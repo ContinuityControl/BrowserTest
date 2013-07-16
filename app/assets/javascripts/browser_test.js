@@ -210,7 +210,7 @@ $(function(){
 		other_site = other_site + ', ' + "NewRelic: Loaded"
 	}
    	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-   	testWithImage("#imagecloudfront","#cloudfront",910, 44, "Cloud Front")
+   	testWithImage("#imagecloudfront","#cloudfront",910, 44, "Cloud Front(d1)")
     //continuitycontrol.assistly.com - Customer Support
 
     //continuitycontrol.desk.com - Customer Support
