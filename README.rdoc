@@ -1,5 +1,13 @@
 == README
 
+ENV variables: 
+LcLi: Live Chat license number
+gaA: Google Analytics account number 
+
+Send Grid- 
+SENDGRID_USERNAME: Username 
+SENDGRID_PASSWORD: Password
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
