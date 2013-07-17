@@ -68,7 +68,7 @@ function replaceStyleFalse(domID)
 }
 //Google Analytics 
 var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-31337942-1']);
+    _gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
     _gaq.push(['_trackPageview']);
 // honey badger
 //Honeybadger.configure({
