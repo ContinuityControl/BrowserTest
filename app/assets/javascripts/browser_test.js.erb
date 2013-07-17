@@ -43,12 +43,22 @@ function replaceStyleFalse(domID)
 var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
     _gaq.push(['_trackPageview']);
+//honey badger
+$(function(){ Honeybadger.configure({
+        api_key: '097b0947f2920dc6355327d2c1c2d1f8', // Public API key
+      });
+      try {
+        testAll();
+      } catch(e) {
+      	Honeybadger.notify(e);
+      }
+});
 
 //3rd party sites variables
 var other_site = "";
 var other_sites_display = "";
 
-$(function(){
+function testAll(){
 	//fades notices after appearing	
 	$('#flash').fadeOut(4000);
 
@@ -139,7 +149,6 @@ $(function(){
 	}
 
 	//loading data from 3rd party sites 
-	
    	//beacon-1.newrelic.com - JavaScript performance monitoring
    	if(typeof NREUMQ === 'undefined'){
 		other_site = other_site  + "NewRelic: Not Loaded";
@@ -165,7 +174,7 @@ $(function(){
 		other_site = other_site + ', ' + "CloudFront(d2b75q7u5jtkag): Loaded";
 	}
 	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-   	testWithImage("#imagecloudfront",910, 44, "Cloud Front(d1ros97qkrwjf5.cloudfront.net)");
+   	testWithImage("#imagecloudfront",910, 44, "Cloud Front(d1ros97qkrwjf5)");
 
     //Honey badger
     
@@ -186,4 +195,4 @@ $(function(){
 	}
 	// add data for 3rd party tests to email 
 	$("#user_datum_other_sites").val(other_site);
-});
+};
