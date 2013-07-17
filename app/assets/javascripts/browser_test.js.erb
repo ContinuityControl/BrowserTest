@@ -1,61 +1,33 @@
 function googleAnalytics(){
 	if (typeof _gat ===  'undefined') {
-    	$("#googleA").text("Not Loaded");
-		replaceStyleFalse("#googleA");
-		other_site = other_site + ', ' + "Google Analytics: Not Loaded"
-		other_sites_display = other_sites_display + ', ' + "Google Analytics: Not Loaded"
+		other_site = other_site + ', ' + "Google Analytics: Not Loaded";
+		other_sites_display = other_sites_display + ', ' + "Google Analytics: Not Loaded";
     }else{
-    	$("#googleA").text("Loaded");
-		replaceStyle("#googleA");
-		other_site = other_site + ', ' + "Google Analytics: Not Loaded"
+		other_site = other_site + ', ' + "Google Analytics: Not Loaded";
     }
 }
 function liveChat() {
     if (typeof LC_API === 'undefined') {
-    	$("#livechatapp").text("Not Loaded");
-		replaceStyleFalse("#livechatapp");
-		other_site = other_site + ', ' + "LiveChat: Not Loaded"
-		other_sites_display = other_sites_display + ', ' + "LiveChat: Not Loaded"
+		other_site = other_site + ', ' + "LiveChat: Not Loaded";
+		other_sites_display = other_sites_display + ', ' + "LiveChat: Not Loaded";
     }else{
-        $("#livechatapp").text("Loaded");
-		replaceStyle("#livechatapp");
-		other_site = other_site + ', ' + "LiveChat: Loaded"
+		other_site = other_site + ', ' + "LiveChat: Loaded";
     }
-}
-function googleMaps(){
-	if (typeof mapOptions === 'undefined') {
-    	$("#googlemaps").text("Not Loaded");
-		replaceStyleFalse("#googlemaps");
-		//other_site = other_site + ', ' + "Google Maps: Not Loaded"
-		//other_sites_display = other_sites_display + ', ' + "Google Maps: Not Loaded"
-    }else{
-        $("#googlemaps").text("Loaded");
-		replaceStyle("#googlemaps");
-		//other_site = other_site + ', ' + "Google Maps: Loaded"
-    }	
 }
 function googlejsapi(){
 	if (typeof google.loader === 'undefined') {
-    	$("#jsapi").text("Not Loaded");
-		replaceStyleFalse("#jsapi");
-		other_site = other_site + ', ' + "jsapi: Not Loaded"
-		other_sites_display = other_sites_display + ', ' + "jsapi: Not Loaded"
+		other_site = other_site + ', ' + "jsapi: Not Loaded";
+		other_sites_display = other_sites_display + ', ' + "jsapi: Not Loaded";
     }else{
-        $("#jsapi").text("Loaded");
-		replaceStyle("#jsapi");
-		other_site = other_site + ', ' + "jsapi: Loaded"
+		other_site = other_site + ', ' + "jsapi: Loaded";
     }	
 }
-function testWithImage(imageID, textID ,width, height, title){
+function testWithImage(imageID ,width, height, title){
 	if($(imageID).width() == width && $(imageID).height() == height){
-		$(textID).text("Loaded");
-		replaceStyle(textID);
-		other_site = other_site + ', ' + title + ": Loaded"
+		other_site = other_site + ', ' + title + ": Loaded";
 	}else{
-		$(textID).text("error");
-		replaceStyleFalse(textID);
-		other_site = other_site + ', ' + title + ": Not Loaded"
-		other_sites_display = other_sites_display + ', ' + title + ": Not Loaded"
+		other_site = other_site + ', ' + title + ": Not Loaded";
+		other_sites_display = other_sites_display + ', ' + title + ": Not Loaded";
 	}
 }
 function replaceStyle(domID)
@@ -66,23 +38,16 @@ function replaceStyleFalse(domID)
 {
 	$(domID).parents(".alert").removeClass("grey").addClass("alert-error");
 }
+
 //Google Analytics 
 var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
     _gaq.push(['_trackPageview']);
-// honey badger
-//Honeybadger.configure({
- // api_key: 'your public api key'
-//});
 
-//try {
- // ...error producing code...
-//} catch(e) {
-  //Honeybadger.notify(e);
-//}
-
+//3rd party sites variables
 var other_site = "";
 var other_sites_display = "";
+
 $(function(){
 	//fades notices after appearing	
 	$('#flash').fadeOut(4000);
@@ -90,6 +55,7 @@ $(function(){
 	//changing btn to send data to continuity
 	$('[name="commit"]').val("Send Data");
 	$('[name="commit"]').addClass("btn");
+
 	//loading data from client
 	if(navigator.userAgent == undefined){
 		replaceStyleFalse("#userAgent");
@@ -159,107 +125,58 @@ $(function(){
 		replaceStyle("#date");
 		$("#user_datum_date").val(Date());
 	}
-	//Load data from control site(Cloud Front) https://d2b75q7u5jtkag.cloudfront.net/assets/application.js
 
-	if(control.datepicker_opts != undefined && $("#image1").width() == 181 && $("#image1").height() == 74){
-		$("#continuity").text("Javascript: loaded  Picture: loaded");
+	//Load data from control site https://control.continuity.net/favicon.ico
+	if($("#imagefavicon").width() == 32 && $("#imagefavicon").height() == 32){
+		$("#continuity").text("Loaded");
 		replaceStyle("#continuity");
-		$("#user_datum_continuity_site").val("Continuity Site: Javascript: loaded  Picture: loaded");
+		$("#user_datum_continuity_site").val("Loaded");
 
-	}else if($("#image1").width() == 181 && $("#image1").height() == 74 && control.datepicker_opts == undefined){
-		$("#continuity").text("Javescript: failed  Picture: loaded");
-		replaceStyleFalse("#continuity");
-		$("#user_datum_continuity_site").val("Continuity Site: Javescript: failed  Picture: loaded");
-	}else if($("#image1").width() != 181 && $("#image1").height() != 74 && control.datepicker_opts != undefined){
-		$("#continuity").text("Javescript: loaded  Picture: failed");
-		replaceStyleFalse("#continuity");
-		$("#user_datum_continuity_site").val("Continuity Site: Javescript: loaded  Picture: failed");
 	}else{
-		$("#continuity").text("Javescript: failed  Picture: failed");
+		$("#continuity").text("Not Loaded");
 		replaceStyleFalse("#continuity");
-		$("#user_datum_continuity_site").val("Continuity Site: Javescript: failed  Picture: failed");
+		$("#user_datum_continuity_site").val("Not Loaded");
 	}
 
-
 	//loading data from 3rd party sites 
-
-
+	
    	//beacon-1.newrelic.com - JavaScript performance monitoring
    	if(typeof NREUMQ === 'undefined'){
-		$("#newrelic").text(" not loaded");
-		replaceStyleFalse("#newrelic");
 		other_site = other_site  + "NewRelic: Not Loaded";
 		other_sites_display = "NewRelic: Not Loaded";
 	}else{
-		$("#newrelic").text("loaded ");
-		replaceStyle("#newrelic");
-		other_site = other_site + "NewRelic: Loaded"
+		other_site = other_site + "NewRelic: Loaded";
 	}
-   	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-   	testWithImage("#imagecloudfront","#cloudfront",910, 44, "Cloud Front(d1)")
-    //continuitycontrol.assistly.com - Customer Support
 
-    //continuitycontrol.desk.com - Customer Support
-    
-    //control-production.s3-us-gov-west-1.amazonaws.com - GovCloud S3
     //*.livechatinc.com (include all subdomains) - Customer Support
     liveChat();
-    //sendgrid.continuity.net - E-Mail and communication services
     
-    //maps-api-ssl.google.com - Google Maps
-    googleMaps();
-    //continuity.app4.hubspot.com - Site-usage analytics
-
     //google.com/jsapi - Google for CDN of JS libraries
     googlejsapi();
+
     //ssl.google-analytics.com - Site-usage analytics
     googleAnalytics();
 
-    //maps.googleapis.com - Google APIs
-    //maps.gstatic.com - Google APIs
-    //mts0.googleapis.com - Google APIs
-    //mts1.googleapis.com - Google APIs
-
-
-    //seal.qualys.com - Security scan seal
-    testWithImage("#imagesealqualys","#sealqualys",89, 47, "Security Scan Seal");
-    //seal.thawte.com - SSL verification seal
-    /*
-    $.ajax({
-
-        url: 'https://seal.thawte.com/getthawteseal',
-        type: 'GET',
-        crossDomain: true,
-        success: function() { },
-        error: function() { },// add in correct erros 
-
-    });
-    */
     //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
     if(typeof control.datepicker_opts === 'undefined'){
-		$("#cloudfrontd2").text("Javascript: d2 loaded ");
-		replaceStyleFalse("#cloudfrontd2");
-		other_site = other_site + ', ' + "d2b75q7u5jtkag.cloudfront.net: Not Loaded";
-		other_sites_display = other_sites_display +', ' + "d2b75q7u5jtkag.cloudfront.net: Not Loaded";
+		other_site = other_site + ', ' + "CloudFront(d2b75q7u5jtkag): Not Loaded";
+		other_sites_display = other_sites_display +', ' + "CloudFront(d2b75q7u5jtkag): Not Loaded";
 	}else{
-		$("#cloudfrontd2").text("Javascript: d2 loaded ");
-		replaceStyle("#cloudfrontd2");
-		other_site = other_site + ', ' + "d2b75q7u5jtkag.cloudfront.net: Loaded"
+		other_site = other_site + ', ' + "CloudFront(d2b75q7u5jtkag): Loaded";
 	}
-    //s3.amazonaws.com/continuity-production - Content CDN and secure file downloads
-    
-    //continuity-production.s3.amazonaws.com - Content CDN and secure file downloads
+	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
+   	testWithImage("#imagecloudfront",910, 44, "Cloud Front(d1ros97qkrwjf5.cloudfront.net)");
 
     //Honey badger
-    /*
+    
     if(typeof Honeybadger === 'undefined'){
-    	$("#honeyBadger").text("not loaded");
-		replaceStyleFalse("#honeyBadger");
+		other_site = other_site + ', ' + "HoneyBadger: Not Loaded";
+		other_sites_display = other_sites_display +', ' + "HoneyBadger: Not Loaded";
     } else {
-    	$("#honeyBadger").text("Loaded");
-		replaceStyle("#honeyBadger");
+		other_site = other_site + ', ' + "HoneyBadger: Loaded";
     }
-	*/
+
+    //display data for 3rd party tests on web browser
 	if(other_sites_display.length <= 0){
 		$("#3rdparty").text("All Sites work");
 		replaceStyle("#3rdparty");
@@ -267,5 +184,6 @@ $(function(){
 		$("#3rdparty").text(other_sites_display);
 		replaceStyleFalse("#3rdparty");
 	}
+	// add data for 3rd party tests to email 
 	$("#user_datum_other_sites").val(other_site);
 });
