@@ -59,12 +59,8 @@ var other_site = "";
 var other_sites_display = "";
 
 function testAll(){
-	//fades notices after appearing	
-	$('#flash').fadeOut(4000);
-
-	//changing btn to send data to continuity
-	$('[name="commit"]').val("Send Data");
-	$('[name="commit"]').addClass("btn");
+	//fades notices after appearing
+	$('#flash').slideUp(4000);
 
 	//loading data from client
 	if(navigator.userAgent == undefined){
