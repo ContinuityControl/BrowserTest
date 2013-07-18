@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Continuity Control</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <head>
+    <meta charset="utf-8">
+    <title>Continuity Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="./assets/js/html5shiv.js"></script>
-      <![endif]-->
+    <script src="./assets/js/html5shiv.js"></script>
+    <![endif]-->
 
-      <%= stylesheet_link_tag    "application", media: "all" %>
-      <style type="text/css">
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <style type="text/css">
       body {
         padding-top: 10%;
         padding-bottom: 10%;
-      }
-      </style>
-      <%= csrf_meta_tags %>
-    </head>
-    <body>
-      <div class="navbar navbar-inverse navbar-fixed-top" style="color=#33CC33;">
-        <div class="navbar-inner">
-          <div class="container">
-            <a href="http://www.continuity.net/">
-              <img id="image1" src="https://d2b75q7u5jtkag.cloudfront.net/assets/cc_logos/CC_logo_white-230aa004e30cf403e251042f65d3a798.png" style="padding-top: 10px;"></img>
-                </a>
-            <div class="input-append pull-right" style="padding-top: 5px;">
-              <h4 style="color:#FFFFFF;">Send your results to Continuity</h4>
-              <%= render "user_data/form" %> 
-            </div>
-            <div class="nav-collapse collapse">
-             <ul class="nav">
-             </ul>
-           </div><!--/.nav-collapse -->
-         </div>
-       </div>
-     </div>
+    }
+    </style>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="color=#33CC33;">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="http://www.continuity.net/">
+            <img id="image1" src="https://d2b75q7u5jtkag.cloudfront.net/assets/cc_logos/CC_logo_white-230aa004e30cf403e251042f65d3a798.png" style="padding-top: 10px;"></img>
+          </a>
+          <div class="input-append pull-right" style="padding-top: 5px;">
+            <h4 style="color:#FFFFFF;">Send your results to Continuity</h4>
+            <%= render "user_data/form" %>
+          </div>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-     <div class="container">
+    <div class="container">
       <%= yield %>
-      
+
 
       <footer>
         <p>&copy; Continuity Control 2013</p>
@@ -52,6 +52,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag 'application' %> 
+    <%= javascript_include_tag 'application' %>
   </body>
-  </html>
+</html>

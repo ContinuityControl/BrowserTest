@@ -1,54 +1,54 @@
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <% if flash[:notice] %>
-      <div class="row" id="flash" style="padding-left: 30px;">
-        <div class"span12">
-            <div class="alert alert-success text-center" id="notice">
-              <h4><%= flash[:notice] %></h4>
-            </div>
-          </div>
-        </div>
-      <% elsif flash[:error] %>
-      <div class="row" id="flash">
-        <div class="span12">
-           <div class="alert alert-error text-center" id="error">
-            <h4><%= flash[:error] %></h4>
-           </div>
-       </div>
-     </div>
-      <% else %>
-
-      <% end %>
-      <div class="row">
-        <div class="span6">
-          <div class="alert continuity grey">
-            <div>
-              <h1>User Agent</h1>
-              <p id="userAgent">Javascript: Disabled</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="span6">
-          <div class="alert continuity grey">
-           <div>
-            <h1>Window Size</h1>
-            <p id="windowSize">Javascript: Disabled</p>
-          </div>
-        </div>
-           </div>
-
-      <div class="span6">
-       <div class="alert continuity grey">
-        <div>
-          <h1>Screen Size</h1>
-          <p id="screenSize">Javascript: Disabled</p>
-        </div>
+<!-- Main hero unit for a primary marketing message or call to action -->
+<% if flash[:notice] %>
+  <div class="row" id="flash" style="padding-left: 30px;">
+    <div class"span12">
+      <div class="alert alert-success text-center" id="notice">
+        <h4><%= flash[:notice] %></h4>
       </div>
     </div>
+  </div>
+<% elsif flash[:error] %>
+  <div class="row" id="flash">
+    <div class="span12">
+      <div class="alert alert-error text-center" id="error">
+        <h4><%= flash[:error] %></h4>
+      </div>
+    </div>
+  </div>
+<% else %>
 
-    <div class="span6">
-     <div class="alert continuity grey">
+<% end %>
+<div class="row">
+  <div class="span6">
+    <div class="alert continuity grey">
+      <div>
+        <h1>User Agent</h1>
+        <p id="userAgent">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity grey">
+      <div>
+        <h1>Window Size</h1>
+        <p id="windowSize">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity grey">
+      <div>
+        <h1>Screen Size</h1>
+        <p id="screenSize">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity grey">
       <div>
         <h1>Operating System</h1>
         <p id="os">Javascript: Disabled</p>
@@ -57,67 +57,68 @@
   </div>
 
   <div class="span6">
-   <div class="alert continuity grey">
-    <div>
-      <h1>Web Browser</h1>
-      <p id="browser">Javascript: Disabled</p>
+    <div class="alert continuity grey">
+      <div>
+        <h1>Web Browser</h1>
+        <p id="browser">Javascript: Disabled</p>
+      </div>
     </div>
   </div>
-</div>
 
   <div class="span6">
-   <div class="alert continuity grey">
-    <div>
-      <h1>Flash Enabled</h1>
-      <p id="flashEnabled">Javascript: Disabled</p>
+    <div class="alert continuity grey">
+      <div>
+        <h1>Flash Enabled</h1>
+        <p id="flashEnabled">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity grey">
+      <div>
+        <h1>Date</h1>
+        <p id="date">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity alert-success">
+      <div>
+        <h1>IP Address</h1>
+        <p>IP Address: <%= request.remote_ip%></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity grey">
+      <div>
+        <h1>3rd Party Sites</h1>
+        <p id="3rdparty">Javascript: Disabled</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="alert continuity grey">
+      <div>
+        <h1>Control.Continuity.net Test</h1>
+        <p id="continuity">Javascript: Disabled</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="span6">
- <div class="alert continuity grey">
-  <div>
-    <h1>Date</h1>
-    <p id="date">Javascript: Disabled</p>
-  </div>
-</div>
-</div>
+<img id="imagecloudfront" style="display:none" src="https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png"></img>
+<img id="imagefavicon" style="display:none" src=" https://control.continuity.net/favicon.ico"></img>
 
-<div class="span6">
- <div class="alert continuity alert-success">
-  <div>
-    <h1>IP Address</h1>
-    <p>IP Address: <%= request.remote_ip%></p>
-  </div>
-</div>
-</div>
-
-<div class="span6">
- <div class="alert continuity grey">
-  <div>
-    <h1>3rd Party Sites</h1>
-    <p id="3rdparty">Javascript: Disabled</p>
-  </div>
-</div>
-</div>
-
-<div class="span6">
- <div class="alert continuity grey">
-  <div>
-    <h1>Control.Continuity.net Test</h1>
-    <p id="continuity">Javascript: Disabled</p>
-  </div>
-</div>
-</div>
-
-    <img id="imagecloudfront" style="display:none" src="https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png"></img>
-    <img id="imagefavicon" style="display:none" src=" https://control.continuity.net/favicon.ico"></img>
-
-    <script type="text/javascript">
-      var __lc = {};
-      __lc.license = "<%= ENV['LcLi'] %>";
-    </script>
-    <script src='https://cdn.livechatinc.com/tracking.js'></script>
-    <script src="https://ssl.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="https://d2b75q7u5jtkag.cloudfront.net/assets/application.js"></script>
+<script type="text/javascript">
+  var __lc = {};
+  __lc.license = "<%= ENV['LcLi'] %>";
+</script>
+<script src='https://cdn.livechatinc.com/tracking.js'></script>
+<script src="https://ssl.google-analytics.com/ga.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://d2b75q7u5jtkag.cloudfront.net/assets/application.js"></script>
