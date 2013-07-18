@@ -20,7 +20,7 @@ function googlejsapi(){
 		other_sites_display = other_sites_display + ', ' + "jsapi: Not Loaded";
     }else{
 		other_site = other_site + ', ' + "jsapi: Loaded";
-    }	
+    }
 }
 function testWithImage(imageID ,width, height, title){
 	if($(imageID).width() == width && $(imageID).height() == height){
@@ -39,7 +39,7 @@ function replaceStyleFalse(domID)
 	$(domID).parents(".alert").removeClass("grey").addClass("alert-error");
 }
 
-//Google Analytics 
+//Google Analytics
 var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
     _gaq.push(['_trackPageview']);
@@ -71,8 +71,8 @@ function testAll(){
 		$("#userAgent").text(navigator.userAgent);
 		replaceStyle("#userAgent");
 		$("#user_datum_user_agent_string").val(navigator.userAgent);
-	}	
-	
+	}
+
 	if(window.session.device.viewport.width == undefined && window.session.device.viewport.height == undefined){
 		$("#windowSize").text("Undefined");
 		replaceStyleFalse("#windowSize");
@@ -82,7 +82,7 @@ function testAll(){
 		replaceStyle("#windowSize");
 		$("#user_datum_window_size").val(window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
 	}
-	
+
 	if(window.session.device.screen.width == undefined && window.session.device.screen.height == undefined){
 		$("#screenSize").text("Undefined");
 		replaceStyleFalse("#screenSize");
@@ -92,7 +92,7 @@ function testAll(){
 		replaceStyle("#screenSize");
 		$("#user_datum_screen_size").val(window.session.device.screen.width + " x " + window.session.device.screen.height);
 	}
-	
+
 	if(window.session.browser.os == undefined){
 		$("#os").text("Undefined");
 		replaceStyleFalse("#os");
@@ -102,7 +102,7 @@ function testAll(){
 		replaceStyle("#os");
 		$("#user_datum_operating_system").val(window.session.browser.os);
 	}
-	
+
 	if(window.session.browser.browser == undefined && window.session.browser.version == undefined){
 		$("#browser").text("Undefined");
 		replaceStyleFalse("#browser");
@@ -112,7 +112,7 @@ function testAll(){
 		replaceStyle("#browser");
 		$("#user_datum_web_browser").val(window.session.browser.browser + " Version: " + window.session.browser.version);
 	}
-	
+
 	if(window.session.plugins.flash == true && window.session.plugins.flash != undefined){
 		$("#flashEnabled").text(window.session.plugins.flash);
 		replaceStyle("#flashEnabled");
@@ -144,7 +144,7 @@ function testAll(){
 		$("#user_datum_continuity_site").val("Not Loaded");
 	}
 
-	//loading data from 3rd party sites 
+	//loading data from 3rd party sites
    	//beacon-1.newrelic.com - JavaScript performance monitoring
    	if(typeof NREUMQ === 'undefined'){
 		other_site = other_site  + "NewRelic: Not Loaded";
@@ -155,7 +155,7 @@ function testAll(){
 
     //*.livechatinc.com (include all subdomains) - Customer Support
     liveChat();
-    
+
     //google.com/jsapi - Google for CDN of JS libraries
     googlejsapi();
 
@@ -173,7 +173,7 @@ function testAll(){
    	testWithImage("#imagecloudfront",910, 44, "Cloud Front(d1ros97qkrwjf5)");
 
     //Honey badger
-    
+
     if(typeof Honeybadger === 'undefined'){
 		other_site = other_site + ', ' + "HoneyBadger: Not Loaded";
 		other_sites_display = other_sites_display +', ' + "HoneyBadger: Not Loaded";
@@ -189,6 +189,6 @@ function testAll(){
 		$("#3rdparty").text(other_sites_display);
 		replaceStyleFalse("#3rdparty");
 	}
-	// add data for 3rd party tests to email 
+	// add data for 3rd party tests to email
 	$("#user_datum_other_sites").val(other_site);
 };

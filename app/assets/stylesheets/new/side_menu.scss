@@ -1,0 +1,55 @@
+ul.side-menu {
+  @extend .nav;
+  @extend .nav-list;
+  padding-right: 0;
+
+  ul.side-menu {
+    > li > a { line-height: 24px; }
+  }
+
+  > li.active,
+  > li:hover,
+  > li:focus {
+    background-image: image-url("raquot.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+  > li#personnel { background-image: none; }
+
+  > li > a:hover,
+  > li > a:focus {
+    background-color: transparent;
+  }
+
+  > li.active > a,
+  > li.active > a:hover,
+  > li.active > a:focus,
+  > li#personnel:hover > span,
+  > li:hover > a {
+    color: #668d21;
+    text-shadow: none;
+    background-color: transparent;
+  }
+
+  > li > a,
+  > li > span {
+    color: #666;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 40px;
+    display: block;
+  }
+  > li > span {
+    margin-left: -15px;
+    margin-right: -15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  li#smart_folders a { background:image-url("smart_folders/smartFolders_25.png") no-repeat scroll 1px center; }
+  li#policy_docs a { background:image-url("smart_folders/179-notepad.png") no-repeat scroll 4px center; }
+  li#personnel span { background:image-url("settings/112-group.png") no-repeat scroll left center; }
+  li#systems a { background:image-url("settings/107-widescreen.png") no-repeat scroll left center; }
+  li#locations a { background:image-url("settings/177-building.png") no-repeat scroll 8px center; }
+  li#vendors a { background:image-url("settings/46-truck.png") no-repeat scroll left center; }
+  li#profile a { background:image-url("settings/111-user.png") no-repeat scroll 2px center; }
+}
