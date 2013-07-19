@@ -21,11 +21,11 @@ gem 'newrelic_rpm'
 
 gem 'honeybadger'
 
-group :development do 
+group :development do
 	gem "sqlite3"
 end
 
-group :production do 
+group :production do
 	gem "pg"
 	gem 'rails_12factor'
 	gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
