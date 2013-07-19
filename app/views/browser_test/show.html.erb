@@ -1,9 +1,11 @@
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <% if flash[:notice] %>
+
   <div class="row" id="flash" style="padding-left: 30px;">
     <div class"span12">
       <div class="alert alert-success text-center" id="notice">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4><%= flash[:notice] %></h4>
       </div>
     </div>
@@ -12,6 +14,7 @@
   <div class="row" id="flash">
     <div class="span12">
       <div class="alert alert-error text-center" id="error">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4><%= flash[:error] %></h4>
       </div>
     </div>
@@ -121,8 +124,8 @@
 </div>
 </section>
 
-<img id="imagecloudfront" style="display:none" src="https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png"></img>
-<img id="imagefavicon" style="display:none" src=" https://control.continuity.net/favicon.ico"></img>
+<img id="imagecloudfront" style="display:none"></img>
+<img id="imagefavicon" style="display:none"></img>
 
 <script type="text/javascript">
   var __lc = {};

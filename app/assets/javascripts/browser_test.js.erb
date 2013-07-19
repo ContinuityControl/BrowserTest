@@ -1,66 +1,65 @@
+// TODO list
+/*
+   rename p tags to be more consistent
+  #continuinty-form, #continuity-display
+  more object oriented?
+*/
+
 function googleAnalytics(){
-	if (typeof _gat ===  'undefined') {
-		other_site = other_site + ', ' + "Google Analytics: Not Loaded";
-		other_sites_display = other_sites_display + ', ' + "Google Analytics: Not Loaded";
-    }else{
-		other_site = other_site + ', ' + "Google Analytics: Loaded";
-    }
+  if (typeof _gat ===  'undefined') {
+		appendToOtherSites(false, "Google Analytics: Not Loaded");
+  }else{
+		appendToOtherSites(true, "Google Analytics: Loaded");
+  }
 }
 function liveChat() {
-    if (typeof LC_API === 'undefined') {
-		other_site = other_site + ', ' + "LiveChat: Not Loaded";
-		other_sites_display = other_sites_display + ', ' + "LiveChat: Not Loaded";
-    }else{
-		other_site = other_site + ', ' + "LiveChat: Loaded";
-    }
+  if (typeof LC_API === 'undefined') {
+		appendToOtherSites(false, "LiveChat: Not Loaded");
+  }else{
+		appendToOtherSites(true, "LiveChat: Loaded");
+  }
 }
 function googlejsapi(){
-	if (typeof google.loader === 'undefined') {
-		other_site = other_site + ', ' + "jsapi: Not Loaded";
-		other_sites_display = other_sites_display + ', ' + "jsapi: Not Loaded";
-    }else{
-		other_site = other_site + ', ' + "jsapi: Loaded";
-    }
+  if (typeof google.loader === 'undefined') {
+		appendToOtherSites(false, "jsapi: Not Loaded");
+  }else{
+		appendToOtherSites(true, "jsapi: Loaded");
+  }
 }
-function testWithImage(imageID ,width, height, title){
-	if($(imageID).width() == width && $(imageID).height() == height){
-		other_site = other_site + ', ' + title + ": Loaded";
-	}else{
-		other_site = other_site + ', ' + title + ": Not Loaded";
-		other_sites_display = other_sites_display + ', ' + title + ": Not Loaded";
-	}
-}
-function replaceStyle(domID)
-{
+
+function replaceStyle(domID) {
 	$(domID).parents(".alert").removeClass("grey").removeClass('alert-error').addClass("alert-success");
 }
-function replaceStyleFalse(domID)
-{
+
+function replaceStyleFalse(domID) {
 	$(domID).parents(".alert").removeClass("grey").addClass("alert-error");
 }
 
 //Google Analytics
 var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
-    _gaq.push(['_trackPageview']);
+
+_gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
+_gaq.push(['_trackPageview']);
+
 //honey badger
 $(function(){ Honeybadger.configure({
-        api_key: '097b0947f2920dc6355327d2c1c2d1f8', // Public API key
-      });
-      try {
-        testAll();
-      } catch(e) {
-      	Honeybadger.notify(e);
-      }
+  api_key: '097b0947f2920dc6355327d2c1c2d1f8', // Public API key
 });
+try {
+  testAll();
+} catch(e) {
+  Honeybadger.notify(e);
+}});
 
-//3rd party sites variables
-var other_site = "";
-var other_sites_display = "";
+//3rd party site count
+var third_party_site_loads;
+var third_party_site_failures;
 
 function testAll(){
-	//fades notices after appearing
-	$('#flash').slideUp(4000);
+  // alert dismissal
+ // $(".alert").alert();
+  third_party_site_loads = 0;
+  third_party_site_failures = 0;
 
 	//loading data from client
 	if(navigator.userAgent == undefined){
@@ -133,62 +132,99 @@ function testAll(){
 	}
 
 	//Load data from control site https://control.continuity.net/favicon.ico
-	if($("#imagefavicon").width() == 32 && $("#imagefavicon").height() == 32){
-		$("#continuity").text("Loaded");
-		replaceStyle("#continuity");
-		$("#user_datum_continuity_site").val("Loaded");
-
-	}else{
+  $('#imagefavicon').on("error", function() {
 		$("#continuity").text("Not Loaded");
 		replaceStyleFalse("#continuity");
 		$("#user_datum_continuity_site").val("Not Loaded");
-	}
+  });
+  $('#imagefavicon').on("load", function(){
+		$("#continuity").text("Loaded");
+		replaceStyle("#continuity");
+		$("#user_datum_continuity_site").val("Loaded");
+  });
+  $('#imagefavicon').attr('src', "https://control.continuity.net/favicon.ico");
 
 	//loading data from 3rd party sites
-   	//beacon-1.newrelic.com - JavaScript performance monitoring
-   	if(typeof NREUMQ === 'undefined'){
-		other_site = other_site  + "NewRelic: Not Loaded";
-		other_sites_display = "NewRelic: Not Loaded";
-	}else{
-		other_site = other_site + "NewRelic: Loaded";
-	}
+  //beacon-1.newrelic.com - JavaScript performance monitoring
+  if(typeof NREUMQ === 'undefined'){
+    appendToOtherSites(false, "NewRelic: Not Loaded");
+  }else{
+    appendToOtherSites(true, "NewRelic: Loaded");
+  }
 
-    //*.livechatinc.com (include all subdomains) - Customer Support
-    liveChat();
+  //*.livechatinc.com (include all subdomains) - Customer Support
+  liveChat();
 
-    //google.com/jsapi - Google for CDN of JS libraries
-    googlejsapi();
+  //google.com/jsapi - Google for CDN of JS libraries
+  googlejsapi();
 
-    //ssl.google-analytics.com - Site-usage analytics
-    googleAnalytics();
+  //ssl.google-analytics.com - Site-usage analytics
+  googleAnalytics();
 
-    //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
-    if(typeof control.datepicker_opts === 'undefined'){
-		other_site = other_site + ', ' + "CloudFront(d2b75q7u5jtkag): Not Loaded";
-		other_sites_display = other_sites_display +', ' + "CloudFront(d2b75q7u5jtkag): Not Loaded";
-	}else{
-		other_site = other_site + ', ' + "CloudFront(d2b75q7u5jtkag): Loaded";
-	}
+  //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
+  if(typeof control.datepicker_opts === 'undefined'){
+    appendToOtherSites(false, "CloudFront(d1ros97qkrwjf5): Not Loaded");
+  }else{
+    appendToOtherSites(true, "CloudFront(d1ros97qkrwjf5): Loaded");
+  }
+
 	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-   	testWithImage("#imagecloudfront",910, 44, "Cloud Front(d1ros97qkrwjf5)");
+  $('#imagecloudfront').on("error", function() {
+		appendToOtherSites(false, "CloudFront(d1ros97qkrwjf5): Not Loaded");
+  });
+  $('#imagecloudfront').on("load", function(){
+		appendToOtherSites(true, "CloudFront(d1ros97qkrwjf5): Loaded");
+  });
+  $('#imagecloudfront').attr('src', "https://x.d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png");
 
     //Honey badger
 
-    if(typeof Honeybadger === 'undefined'){
-		other_site = other_site + ', ' + "HoneyBadger: Not Loaded";
-		other_sites_display = other_sites_display +', ' + "HoneyBadger: Not Loaded";
+  if(typeof Honeybadger === 'undefined'){
+    appendToOtherSites(false,'HoneyBadger: Not Loaded');
+  } else {
+    appendToOtherSites(true,'HoneyBadger: Loaded');
+  }
+
+  // display data for 3rd party tests on web browser
+	// add data for 3rd party tests to email
+  function appendToOtherSites(loaded, text_to_display) {
+    // set string
+    if(loaded){
+      third_party_site_loads += 1;
+      if(third_party_site_loads == 1) {
+        $("#user_datum_other_sites").val(
+          text_to_display
+        );
+      } else {
+        $("#user_datum_other_sites").val(
+          $("#user_datum_other_sites").val() + ", " + text_to_display
+        );
+      }
     } else {
-		other_site = other_site + ', ' + "HoneyBadger: Loaded";
+      third_party_site_failures += 1;
+      if(third_party_site_failures == 1){
+        $("#3rdparty").text(
+          text_to_display
+        );
+        $("#user_datum_other_sites").val(
+          text_to_display
+        );
+      } else {
+        $("#3rdparty").text(
+          $("#3rdparty").text() + text_to_display
+        );
+        $("#user_datum_other_sites").val(
+          $("#user_datum_other_sites").val() + text_to_display
+        );
+      }
     }
 
-    //display data for 3rd party tests on web browser
-	if(other_sites_display.length <= 0){
-		$("#3rdparty").text("All Sites work");
-		replaceStyle("#3rdparty");
-	}else{
-		$("#3rdparty").text(other_sites_display);
-		replaceStyleFalse("#3rdparty");
-	}
-	// add data for 3rd party tests to email
-	$("#user_datum_other_sites").val(other_site);
+    // handle completion of loads and failures
+    if(third_party_site_loads == 7){
+      $("#3rdparty").text('All loaded');
+      replaceStyle("#3rdparty");
+    } else {
+      replaceStyleFalse("#3rdparty");
+    }
+  }
 };
