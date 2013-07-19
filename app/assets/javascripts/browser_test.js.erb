@@ -1,38 +1,38 @@
 // TODO list
 /*
    rename p tags to be more consistent
-  #continuinty-form, #continuity-display
-  more object oriented?
-*/
+   #continuinty-form, #continuity-display
+   more object oriented?
+ */
 
 function googleAnalytics(){
   if (typeof _gat ===  'undefined') {
-		appendToOtherSites(false, "Google Analytics: Not Loaded");
+    appendToOtherSites(false, "Google Analytics: Not Loaded");
   }else{
-		appendToOtherSites(true, "Google Analytics: Loaded");
+    appendToOtherSites(true, "Google Analytics: Loaded");
   }
 }
 function liveChat() {
   if (typeof LC_API === 'undefined') {
-		appendToOtherSites(false, "LiveChat: Not Loaded");
+    appendToOtherSites(false, "LiveChat: Not Loaded");
   }else{
-		appendToOtherSites(true, "LiveChat: Loaded");
+    appendToOtherSites(true, "LiveChat: Loaded");
   }
 }
 function googlejsapi(){
   if (typeof google.loader === 'undefined') {
-		appendToOtherSites(false, "jsapi: Not Loaded");
+    appendToOtherSites(false, "jsapi: Not Loaded");
   }else{
-		appendToOtherSites(true, "jsapi: Loaded");
+    appendToOtherSites(true, "jsapi: Loaded");
   }
 }
 
 function replaceStyle(domID) {
-	$(domID).parents(".alert").removeClass("grey").removeClass('alert-error').addClass("alert-success");
+  $(domID).parents(".alert").removeClass("grey").removeClass('alert-error').addClass("alert-success");
 }
 
 function replaceStyleFalse(domID) {
-	$(domID).parents(".alert").removeClass("grey").addClass("alert-error");
+  $(domID).parents(".alert").removeClass("grey").addClass("alert-error");
 }
 
 //Google Analytics
@@ -57,94 +57,94 @@ var third_party_site_failures;
 
 function testAll(){
   // alert dismissal
- // $(".alert").alert();
+  // $(".alert").alert();
   third_party_site_loads = 0;
   third_party_site_failures = 0;
 
-	//loading data from client
-	if(navigator.userAgent == undefined){
-		replaceStyleFalse("#userAgent");
-		$("#userAgent").text("Undefined");
-		$("#user_datum_user_agent_string").val("Undefined");
-	}else{
-		$("#userAgent").text(navigator.userAgent);
-		replaceStyle("#userAgent");
-		$("#user_datum_user_agent_string").val(navigator.userAgent);
-	}
+  //loading data from client
+  if(navigator.userAgent == undefined){
+    replaceStyleFalse("#userAgent");
+    $("#userAgent").text("Undefined");
+    $("#user_datum_user_agent_string").val("Undefined");
+  }else{
+    $("#userAgent").text(navigator.userAgent);
+    replaceStyle("#userAgent");
+    $("#user_datum_user_agent_string").val(navigator.userAgent);
+  }
 
-	if(window.session.device.viewport.width == undefined && window.session.device.viewport.height == undefined){
-		$("#windowSize").text("Undefined");
-		replaceStyleFalse("#windowSize");
-		$("#user_datum_window_size").val("Undefined");
-	}else{
-		$("#windowSize").text( window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
-		replaceStyle("#windowSize");
-		$("#user_datum_window_size").val(window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
-	}
+  if(window.session.device.viewport.width == undefined && window.session.device.viewport.height == undefined){
+    $("#windowSize").text("Undefined");
+    replaceStyleFalse("#windowSize");
+    $("#user_datum_window_size").val("Undefined");
+  }else{
+    $("#windowSize").text( window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
+    replaceStyle("#windowSize");
+    $("#user_datum_window_size").val(window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
+  }
 
-	if(window.session.device.screen.width == undefined && window.session.device.screen.height == undefined){
-		$("#screenSize").text("Undefined");
-		replaceStyleFalse("#screenSize");
-		$("#user_datum_screen_size").val("Undefined");
-	}else{
-		$("#screenSize").text(window.session.device.screen.width + " x " + window.session.device.screen.height);
-		replaceStyle("#screenSize");
-		$("#user_datum_screen_size").val(window.session.device.screen.width + " x " + window.session.device.screen.height);
-	}
+  if(window.session.device.screen.width == undefined && window.session.device.screen.height == undefined){
+    $("#screenSize").text("Undefined");
+    replaceStyleFalse("#screenSize");
+    $("#user_datum_screen_size").val("Undefined");
+  }else{
+    $("#screenSize").text(window.session.device.screen.width + " x " + window.session.device.screen.height);
+    replaceStyle("#screenSize");
+    $("#user_datum_screen_size").val(window.session.device.screen.width + " x " + window.session.device.screen.height);
+  }
 
-	if(window.session.browser.os == undefined){
-		$("#os").text("Undefined");
-		replaceStyleFalse("#os");
-		$("#user_datum_operating_system").val("Undefined");
-	}else{
-		$("#os").text(window.session.browser.os);
-		replaceStyle("#os");
-		$("#user_datum_operating_system").val(window.session.browser.os);
-	}
+  if(window.session.browser.os == undefined){
+    $("#os").text("Undefined");
+    replaceStyleFalse("#os");
+    $("#user_datum_operating_system").val("Undefined");
+  }else{
+    $("#os").text(window.session.browser.os);
+    replaceStyle("#os");
+    $("#user_datum_operating_system").val(window.session.browser.os);
+  }
 
-	if(window.session.browser.browser == undefined && window.session.browser.version == undefined){
-		$("#browser").text("Undefined");
-		replaceStyleFalse("#browser");
-		$("#user_datum_web_browser").val("Undefined");
-	}else{
-		$("#browser").text(window.session.browser.browser + " Version: " + window.session.browser.version);
-		replaceStyle("#browser");
-		$("#user_datum_web_browser").val(window.session.browser.browser + " Version: " + window.session.browser.version);
-	}
+  if(window.session.browser.browser == undefined && window.session.browser.version == undefined){
+    $("#browser").text("Undefined");
+    replaceStyleFalse("#browser");
+    $("#user_datum_web_browser").val("Undefined");
+  }else{
+    $("#browser").text(window.session.browser.browser + " Version: " + window.session.browser.version);
+    replaceStyle("#browser");
+    $("#user_datum_web_browser").val(window.session.browser.browser + " Version: " + window.session.browser.version);
+  }
 
-	if(window.session.plugins.flash == true && window.session.plugins.flash != undefined){
-		$("#flashEnabled").text(window.session.plugins.flash);
-		replaceStyle("#flashEnabled");
-		$("#user_datum_flash_enabled").val(window.session.plugins.flash);
-	}else{
-		$("#flashEnabled").text("False");
-		replaceStyleFalse("#flashEnabled");
-		$("#user_datum_flash_enabled").val("False");
-	}
-	if(Date() == undefined){
-		$("#date").text("Undefined");
-		replaceStyleFalse("#date");
-		$("#user_datum_date").val("Undefined");
-	}else{
-		$("#date").text(Date());
-		replaceStyle("#date");
-		$("#user_datum_date").val(Date());
-	}
+  if(window.session.plugins.flash == true && window.session.plugins.flash != undefined){
+    $("#flashEnabled").text(window.session.plugins.flash);
+    replaceStyle("#flashEnabled");
+    $("#user_datum_flash_enabled").val(window.session.plugins.flash);
+  }else{
+    $("#flashEnabled").text("False");
+    replaceStyleFalse("#flashEnabled");
+    $("#user_datum_flash_enabled").val("False");
+  }
+  if(Date() == undefined){
+    $("#date").text("Undefined");
+    replaceStyleFalse("#date");
+    $("#user_datum_date").val("Undefined");
+  }else{
+    $("#date").text(Date());
+    replaceStyle("#date");
+    $("#user_datum_date").val(Date());
+  }
 
-	//Load data from control site https://control.continuity.net/favicon.ico
+  //Load data from control site https://control.continuity.net/favicon.ico
   $('#imagefavicon').on("error", function() {
-		$("#continuity").text("Not Loaded");
-		replaceStyleFalse("#continuity");
-		$("#user_datum_continuity_site").val("Not Loaded");
+    $("#continuity").text("Not Loaded");
+    replaceStyleFalse("#continuity");
+    $("#user_datum_continuity_site").val("Not Loaded");
   });
   $('#imagefavicon').on("load", function(){
-		$("#continuity").text("Loaded");
-		replaceStyle("#continuity");
-		$("#user_datum_continuity_site").val("Loaded");
+    $("#continuity").text("Loaded");
+    replaceStyle("#continuity");
+    $("#user_datum_continuity_site").val("Loaded");
   });
   $('#imagefavicon').attr('src', "https://control.continuity.net/favicon.ico");
 
-	//loading data from 3rd party sites
+  //loading data from 3rd party sites
   //beacon-1.newrelic.com - JavaScript performance monitoring
   if(typeof NREUMQ === 'undefined'){
     appendToOtherSites(false, "NewRelic: Not Loaded");
@@ -168,16 +168,16 @@ function testAll(){
     appendToOtherSites(true, "CloudFront(d1ros97qkrwjf5): Loaded");
   }
 
-	//d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
+  //d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
   $('#imagecloudfront').on("error", function() {
-		appendToOtherSites(false, "CloudFront(d1ros97qkrwjf5): Not Loaded");
+    appendToOtherSites(false, "CloudFront(d1ros97qkrwjf5): Not Loaded");
   });
   $('#imagecloudfront').on("load", function(){
-		appendToOtherSites(true, "CloudFront(d1ros97qkrwjf5): Loaded");
+    appendToOtherSites(true, "CloudFront(d1ros97qkrwjf5): Loaded");
   });
-  $('#imagecloudfront').attr('src', "https://x.d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png");
+  $('#imagecloudfront').attr('src', "https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png");
 
-    //Honey badger
+  //Honey badger
 
   if(typeof Honeybadger === 'undefined'){
     appendToOtherSites(false,'HoneyBadger: Not Loaded');
@@ -185,46 +185,44 @@ function testAll(){
     appendToOtherSites(true,'HoneyBadger: Loaded');
   }
 
-  // display data for 3rd party tests on web browser
-	// add data for 3rd party tests to email
-  function appendToOtherSites(loaded, text_to_display) {
-    // set string
-    if(loaded){
-      third_party_site_loads += 1;
-      if(third_party_site_loads == 1) {
-        $("#user_datum_other_sites").val(
-          text_to_display
-        );
-      } else {
-        $("#user_datum_other_sites").val(
-          $("#user_datum_other_sites").val() + ", " + text_to_display
-        );
-      }
+}
+function appendToOtherSites(loaded, text_to_display) {
+  // set string
+  if(loaded){
+    third_party_site_loads += 1;
+    if(third_party_site_loads == 1) {
+      $("#user_datum_other_sites").val(
+        text_to_display
+      );
     } else {
-      third_party_site_failures += 1;
-      if(third_party_site_failures == 1){
-        $("#3rdparty").text(
-          text_to_display
-        );
-        $("#user_datum_other_sites").val(
-          text_to_display
-        );
-      } else {
-        $("#3rdparty").text(
-          $("#3rdparty").text() + text_to_display
-        );
-        $("#user_datum_other_sites").val(
-          $("#user_datum_other_sites").val() + text_to_display
-        );
-      }
+      $("#user_datum_other_sites").val(
+        $("#user_datum_other_sites").val() + ", " + text_to_display
+      );
     }
-
-    // handle completion of loads and failures
-    if(third_party_site_loads == 7){
-      $("#3rdparty").text('All loaded');
-      replaceStyle("#3rdparty");
+  } else {
+    third_party_site_failures += 1;
+    if(third_party_site_failures == 1){
+      $("#3rdparty").text(
+        text_to_display
+      );
+      $("#user_datum_other_sites").val(
+        text_to_display
+      );
     } else {
-      replaceStyleFalse("#3rdparty");
+      $("#3rdparty").text(
+        $("#3rdparty").text() + ", " + text_to_display
+      );
+      $("#user_datum_other_sites").val(
+        $("#user_datum_other_sites").val() + ", " + text_to_display
+      );
     }
   }
-};
+
+  // handle completion of loads and failures
+  if(third_party_site_loads == 7){
+    $("#3rdparty").text('All loaded');
+    replaceStyle("#3rdparty");
+  } else if (third_party_site_loads + third_party_site_failures == 7) {
+    replaceStyleFalse("#3rdparty");
+  }
+}
