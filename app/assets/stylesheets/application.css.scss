@@ -19,7 +19,7 @@ $navbarLinkColor: #A9DFFF;
 $navbarLinkColorHover: #A9DFFF;
 
 @import 'bootstrap';
-@import 'bootstrap-responsive';
+/* @import 'bootstrap-responsive'; */
 
 @import 'new/navbar';
 @import 'new/footer';
@@ -94,13 +94,14 @@ fieldset {
 
 
 div.alert.continuity{
-    min-height:70px;
-    max-height: 70px;
-    border-spacing: 19px;
-	h1{
-		line-height: 10px;
-		font-size: 20px;
-	}
+  min-height:80px;
+  max-height:80px;
+  border-spacing: 19px;
+  margin-bottom: 10px;
+  h1{
+    line-height: 10px;
+    font-size: 18px;
+  }
 }
 .grey{
     	background-color: #D3D3D3;
@@ -115,4 +116,7 @@ div.span6{
 }
 footer{
 	padding-left: 5%;
+}
+.box {
+  padding-bottom: 0px;
 }
