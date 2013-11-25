@@ -32,7 +32,7 @@ group :production do
   	gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
 
-gem 'debugger'
+gem 'debugger', group: [:development, :test]
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -47,6 +47,3 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
