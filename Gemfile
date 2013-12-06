@@ -32,7 +32,9 @@ group :production do
   	gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
 
-gem 'debugger', group: [:development, :test]
+group :development, :test do
+  gem 'byebug'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
