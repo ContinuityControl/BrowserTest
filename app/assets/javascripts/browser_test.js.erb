@@ -168,15 +168,6 @@ function testAll(){
     appendToOtherSites(true, "CloudFront(d2b75q7u5jtkag): Loaded");
   }
 
-  //d1ros97qkrwjf5.cloudfront.net - JavaScript performance monitoring
-  $('#imagecloudfront').on("error", function() {
-    appendToOtherSites(false, "CloudFront(d1ros97qkrwjf5): Not Loaded");
-  });
-  $('#imagecloudfront').on("load", function(){
-    appendToOtherSites(true, "CloudFront(d1ros97qkrwjf5): Loaded");
-  });
-  $('#imagecloudfront').attr('src', "https://d1apaj9cv0pgu9.cloudfront.net/assets/home/top-stripes.png");
-
   //Honey badger
 
   if(typeof Honeybadger === 'undefined'){
