@@ -145,8 +145,8 @@ function testAll(){
   $('#imagefavicon').attr('src', "https://control.continuity.net/browser-test.png");
 
   //loading data from 3rd party sites
-  //beacon-1.newrelic.com - JavaScript performance monitoring
-  if(typeof NREUMQ === 'undefined'){
+  //beacon-3.newrelic.com - JavaScript performance monitoring
+  if(typeof NREUM === 'undefined'){
     appendToOtherSites(false, "NewRelic: Not Loaded");
   }else{
     appendToOtherSites(true, "NewRelic: Loaded");
