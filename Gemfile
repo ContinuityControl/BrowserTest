@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 
 gem 'newrelic_rpm'
 
