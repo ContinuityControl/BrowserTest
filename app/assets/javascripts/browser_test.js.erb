@@ -37,15 +37,15 @@ function replaceStyleFalse(domID) {
 
 
 function blacklisted() {
-    var parser = new UAParser();
-    var browser = parser.getResult().browser.name
-    var version = parseFloat(parser.getResult().browser.version)
+  var parser = new UAParser();
+  var browser = parser.getResult().browser.name;
+  var version = parseFloat(parser.getResult().browser.version);
 
-    if(browser == 'IE' && version < 8.0){
-      return true;
-    }else{
-      return false;
-    }
+  if(browser == 'IE' && version < 8.0){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 //Google Analytics
