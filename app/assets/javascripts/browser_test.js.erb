@@ -41,7 +41,7 @@ function blacklisted() {
     var browser = parser.getResult().browser.name
     var version = parseFloat(parser.getResult().browser.version)
 
-    if(browser == 'IE' && version < 9.0){
+    if(browser == 'IE' && version < 8.0){
       return true;
     }else{
       return false;
@@ -56,7 +56,7 @@ _gaq.push(['_trackPageview']);
 
 //honey badger
 $(function(){ Honeybadger.configure({
-  api_key: '097b0947f2920dc6355327d2c1c2d1f8', // Public API key
+  api_key: '097b0947f2920dc6355327d2c1c2d1f8' // Public API key
 });
 try {
   testAll();
@@ -82,7 +82,7 @@ function testAll(){
   }else if(blacklisted()){
     replaceStyleFalse("#userAgent");
     $("#userAgent").text(navigator.userAgent);
-    $("#user_datum_user_agent_string").val("navigator.userAgent");
+    $("#user_datum_user_agent_string").val(navigator.userAgent);
   }else{
     $("#userAgent").text(navigator.userAgent);
     replaceStyle("#userAgent");
