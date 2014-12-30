@@ -82,6 +82,7 @@ function testAll(){
   }else if(blacklisted()){
     replaceStyleFalse("#userAgent");
     $("#userAgent").text(navigator.userAgent);
+    $("#userAgent").append("\n Your browser my be in a compatibility mode supporting an older version of IE.");
     $("#user_datum_user_agent_string").val(navigator.userAgent);
   }else{
     $("#userAgent").text(navigator.userAgent);
