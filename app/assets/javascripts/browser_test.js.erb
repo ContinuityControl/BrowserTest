@@ -35,6 +35,19 @@ function replaceStyleFalse(domID) {
   $(domID).parents(".alert").removeClass("grey").addClass("alert-error");
 }
 
+
+function blacklisted() {
+    var parser = new UAParser();
+    var browser = parser.getResult().browser.name
+    var version = parseFloat(parser.getResult().browser.version)
+
+    if(browser == 'IE' && version < 9.0){
+      return true;
+    }else{
+      return false;
+    }
+}
+
 //Google Analytics
 var _gaq = _gaq || [];
 
@@ -66,6 +79,10 @@ function testAll(){
     replaceStyleFalse("#userAgent");
     $("#userAgent").text("Undefined");
     $("#user_datum_user_agent_string").val("Undefined");
+  }else if(blacklisted()){
+    replaceStyleFalse("#userAgent");
+    $("#userAgent").text(navigator.userAgent);
+    $("#user_datum_user_agent_string").val("navigator.userAgent");
   }else{
     $("#userAgent").text(navigator.userAgent);
     replaceStyle("#userAgent");
