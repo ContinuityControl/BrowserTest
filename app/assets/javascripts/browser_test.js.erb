@@ -12,13 +12,6 @@ function googleAnalytics(){
     appendToOtherSites(true, "Google Analytics: Loaded");
   }
 }
-function liveChat() {
-  if (typeof LC_API === 'undefined') {
-    appendToOtherSites(false, "LiveChat: Not Loaded");
-  }else{
-    appendToOtherSites(true, "LiveChat: Loaded");
-  }
-}
 function googlejsapi(){
   if (typeof google.loader === 'undefined') {
     appendToOtherSites(false, "jsapi: Not Loaded");
@@ -170,20 +163,17 @@ function testAll(){
     appendToOtherSites(true, "NewRelic: Loaded");
   }
 
-  //*.livechatinc.com (include all subdomains) - Customer Support
-  liveChat();
-
   //google.com/jsapi - Google for CDN of JS libraries
   googlejsapi();
 
   //ssl.google-analytics.com - Site-usage analytics
   googleAnalytics();
 
-  //d2b75q7u5jtkag.cloudfront.net - Continuity Control's Content CDN
+  //assets-cdn.continuity.net - Continuity Control's Content CDN
   if(typeof control.datepicker_opts === 'undefined'){
-    appendToOtherSites(false, "CloudFront(d2b75q7u5jtkag): Not Loaded");
+    appendToOtherSites(false, "CloudFront(assets-cdn.continuity.net): Not Loaded");
   }else{
-    appendToOtherSites(true, "CloudFront(d2b75q7u5jtkag): Loaded");
+    appendToOtherSites(true, "CloudFront(assets-cdn.continuity.net): Loaded");
   }
 
   //Honey badger
