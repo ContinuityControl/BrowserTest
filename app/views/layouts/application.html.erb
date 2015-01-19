@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="./assets/js/html5shiv.js"></script>
@@ -26,7 +27,7 @@
       <div class="navbar-inner">
         <div class="container">
           <a href="http://www.continuity.net/" class="brand">
-            <img id="image1" src="https://d2b75q7u5jtkag.cloudfront.net/assets/cc_logos/CC_logo_white-230aa004e30cf403e251042f65d3a798.png" style="padding-top: 10px;"></img>
+            <%= image_tag 'CC_logo_white.png', style: 'padding-top: 10px;' %>
           </a>
           <div class="input-append pull-right" style="padding-top: 5px;">
             <h4 style="color:#FFFFFF;">Send your results to Continuity</h4>
