@@ -108,15 +108,14 @@ function testAll(){
     }
   });
 
-  if(window.session.device.screen.width == undefined && window.session.device.screen.height == undefined){
-    $("#screen_size").text("Undefined");
-    styleAsFailed("#screen_size");
-    $("#user_datum_screen_size").val("Undefined");
-  }else{
-    $("#screen_size").text(window.session.device.screen.width + " x " + window.session.device.screen.height);
-    styleAsPassed("#screen_size");
-    $("#user_datum_screen_size").val(window.session.device.screen.width + " x " + window.session.device.screen.height);
-  }
+  test('#screen_size', function(pass, fail) {
+    screen = window.session.device.screen;
+    if (screen.width == undefined && screen.height == undefined) {
+      fail("Undefined");
+    } else {
+      pass(screen.width + " x " +screen.height);
+    }
+  });
 
   if(window.session.browser.os == undefined){
     $("#operating_system").text("Undefined");
