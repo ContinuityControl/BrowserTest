@@ -134,15 +134,14 @@ function testAll(){
     }
   });
 
-  if(window.session.plugins.flash == true && window.session.plugins.flash != undefined){
-    $("#flash_enabled").text(window.session.plugins.flash);
-    styleAsPassed("#flash_enabled");
-    $("#user_datum_flash_enabled").val(window.session.plugins.flash);
-  }else{
-    $("#flash_enabled").text("False");
-    styleAsFailed("#flash_enabled");
-    $("#user_datum_flash_enabled").val("False");
-  }
+  test('#flash_enabled', function(pass, fail) {
+    if (window.session.plugins.flash == true && window.session.plugins.flash != undefined) {
+      pass(window.session.plugins.flash);
+    } else {
+      fail("False");
+    }
+  });
+
   if(Date() == undefined){
     $("#date").text("Undefined");
     styleAsFailed("#date");
