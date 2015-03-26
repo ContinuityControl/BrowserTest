@@ -117,15 +117,13 @@ function testAll(){
     }
   });
 
-  if(window.session.browser.os == undefined){
-    $("#operating_system").text("Undefined");
-    styleAsFailed("#operating_system");
-    $("#user_datum_operating_system").val("Undefined");
-  }else{
-    $("#operating_system").text(window.session.browser.os);
-    styleAsPassed("#operating_system");
-    $("#user_datum_operating_system").val(window.session.browser.os);
-  }
+  test('#operating_system', function(pass, fail) {
+    if (window.session.browser.os == undefined) {
+      fail("Undefined");
+    } else {
+      pass(window.session.browser.os);
+    }
+  });
 
   if(window.session.browser.browser == undefined && window.session.browser.version == undefined){
     $("#web_browser").text("Undefined");
