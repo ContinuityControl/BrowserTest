@@ -150,18 +150,16 @@ function testAll(){
     }
   });
 
-  //Load data from control site https://control.continuity.net/favicon.ico
-  $('#imagefavicon').on("error", function() {
-    $("#continuity_site").text("Not Loaded");
-    styleAsFailed("#continuity_site");
-    $("#user_datum_continuity_site").val("Not Loaded");
+  test('#continuity_site', function(pass, fail) {
+    //Load data from control site https://control.continuity.net/favicon.ico
+    $('#imagefavicon').on("error", function() {
+      fail('Not Loaded');
+    });
+    $('#imagefavicon').on("load", function(){
+      pass('Loaded');
+    });
+    $('#imagefavicon').attr('src', "https://control.continuity.net/browser-test.png");
   });
-  $('#imagefavicon').on("load", function(){
-    $("#continuity_site").text("Loaded");
-    styleAsPassed("#continuity_site");
-    $("#user_datum_continuity_site").val("Loaded");
-  });
-  $('#imagefavicon').attr('src', "https://control.continuity.net/browser-test.png");
 
   //loading data from 3rd party sites
   //beacon-3.newrelic.com - JavaScript performance monitoring
