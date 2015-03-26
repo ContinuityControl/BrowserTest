@@ -68,67 +68,67 @@ function testAll(){
 
   //loading data from client
   if(navigator.userAgent == undefined){
-    styleAsFailed("#userAgent");
-    $("#userAgent").text("Undefined");
+    styleAsFailed("#user_agent_string");
+    $("#user_agent_string").text("Undefined");
     $("#user_datum_user_agent_string").val("Undefined");
   }else if(blacklisted()){
-    styleAsFailed("#userAgent");
-    $("#userAgent").text(navigator.userAgent);
-    $("#userAgent").append("\n Your browser may be in a compatibility mode supporting an older version of IE.");
+    styleAsFailed("#user_agent_string");
+    $("#user_agent_string").text(navigator.userAgent);
+    $("#user_agent_string").append("\n Your browser may be in a compatibility mode supporting an older version of IE.");
     $("#user_datum_user_agent_string").val(navigator.userAgent);
   }else{
-    $("#userAgent").text(navigator.userAgent);
-    styleAsPassed("#userAgent");
+    $("#user_agent_string").text(navigator.userAgent);
+    styleAsPassed("#user_agent_string");
     $("#user_datum_user_agent_string").val(navigator.userAgent);
   }
 
   if(window.session.device.viewport.width == undefined && window.session.device.viewport.height == undefined){
-    $("#windowSize").text("Undefined");
-    styleAsFailed("#windowSize");
+    $("#window_size").text("Undefined");
+    styleAsFailed("#window_size");
     $("#user_datum_window_size").val("Undefined");
   }else{
-    $("#windowSize").text( window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
-    styleAsPassed("#windowSize");
+    $("#window_size").text( window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
+    styleAsPassed("#window_size");
     $("#user_datum_window_size").val(window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
   }
 
   if(window.session.device.screen.width == undefined && window.session.device.screen.height == undefined){
-    $("#screenSize").text("Undefined");
-    styleAsFailed("#screenSize");
+    $("#screen_size").text("Undefined");
+    styleAsFailed("#screen_size");
     $("#user_datum_screen_size").val("Undefined");
   }else{
-    $("#screenSize").text(window.session.device.screen.width + " x " + window.session.device.screen.height);
-    styleAsPassed("#screenSize");
+    $("#screen_size").text(window.session.device.screen.width + " x " + window.session.device.screen.height);
+    styleAsPassed("#screen_size");
     $("#user_datum_screen_size").val(window.session.device.screen.width + " x " + window.session.device.screen.height);
   }
 
   if(window.session.browser.os == undefined){
-    $("#os").text("Undefined");
-    styleAsFailed("#os");
+    $("#operating_system").text("Undefined");
+    styleAsFailed("#operating_system");
     $("#user_datum_operating_system").val("Undefined");
   }else{
-    $("#os").text(window.session.browser.os);
-    styleAsPassed("#os");
+    $("#operating_system").text(window.session.browser.os);
+    styleAsPassed("#operating_system");
     $("#user_datum_operating_system").val(window.session.browser.os);
   }
 
   if(window.session.browser.browser == undefined && window.session.browser.version == undefined){
-    $("#browser").text("Undefined");
-    styleAsFailed("#browser");
+    $("#web_browser").text("Undefined");
+    styleAsFailed("#web_browser");
     $("#user_datum_web_browser").val("Undefined");
   }else{
-    $("#browser").text(window.session.browser.browser + " Version: " + window.session.browser.version);
-    styleAsPassed("#browser");
+    $("#web_browser").text(window.session.browser.browser + " Version: " + window.session.browser.version);
+    styleAsPassed("#web_browser");
     $("#user_datum_web_browser").val(window.session.browser.browser + " Version: " + window.session.browser.version);
   }
 
   if(window.session.plugins.flash == true && window.session.plugins.flash != undefined){
-    $("#flashEnabled").text(window.session.plugins.flash);
-    styleAsPassed("#flashEnabled");
+    $("#flash_enabled").text(window.session.plugins.flash);
+    styleAsPassed("#flash_enabled");
     $("#user_datum_flash_enabled").val(window.session.plugins.flash);
   }else{
-    $("#flashEnabled").text("False");
-    styleAsFailed("#flashEnabled");
+    $("#flash_enabled").text("False");
+    styleAsFailed("#flash_enabled");
     $("#user_datum_flash_enabled").val("False");
   }
   if(Date() == undefined){
@@ -143,13 +143,13 @@ function testAll(){
 
   //Load data from control site https://control.continuity.net/favicon.ico
   $('#imagefavicon').on("error", function() {
-    $("#continuity").text("Not Loaded");
-    styleAsFailed("#continuity");
+    $("#continuity_site").text("Not Loaded");
+    styleAsFailed("#continuity_site");
     $("#user_datum_continuity_site").val("Not Loaded");
   });
   $('#imagefavicon').on("load", function(){
-    $("#continuity").text("Loaded");
-    styleAsPassed("#continuity");
+    $("#continuity_site").text("Loaded");
+    styleAsPassed("#continuity_site");
     $("#user_datum_continuity_site").val("Loaded");
   });
   $('#imagefavicon').attr('src', "https://control.continuity.net/browser-test.png");
@@ -200,15 +200,15 @@ function appendToOtherSites(loaded, text_to_display) {
   } else {
     third_party_site_failures += 1;
     if(third_party_site_failures == 1){
-      $("#3rdparty").text(
+      $("#other_sites").text(
         text_to_display
       );
       $("#user_datum_other_sites").val(
         text_to_display
       );
     } else {
-      $("#3rdparty").text(
-        $("#3rdparty").text() + ", " + text_to_display
+      $("#other_sites").text(
+        $("#other_sites").text() + ", " + text_to_display
       );
       $("#user_datum_other_sites").val(
         $("#user_datum_other_sites").val() + ", " + text_to_display
@@ -218,9 +218,9 @@ function appendToOtherSites(loaded, text_to_display) {
 
   // handle completion of loads and failures
   if(third_party_site_loads == 5){
-    $("#3rdparty").text('All loaded');
-    styleAsPassed("#3rdparty");
+    $("#other_sites").text('All loaded');
+    styleAsPassed("#other_sites");
   } else if (third_party_site_loads + third_party_site_failures == 6) {
-    styleAsFailed("#3rdparty");
+    styleAsFailed("#other_sites");
   }
 }
