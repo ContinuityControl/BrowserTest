@@ -99,16 +99,14 @@ function testAll(){
     }
   });
 
-
-  if(window.session.device.viewport.width == undefined && window.session.device.viewport.height == undefined){
-    $("#window_size").text("Undefined");
-    styleAsFailed("#window_size");
-    $("#user_datum_window_size").val("Undefined");
-  }else{
-    $("#window_size").text( window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
-    styleAsPassed("#window_size");
-    $("#user_datum_window_size").val(window.session.device.viewport.width + " x "+ window.session.device.viewport.height);
-  }
+  test('#window_size', function(pass, fail) {
+    var viewport = window.session.device.viewport;
+    if (viewport.width == undefined && viewport.height == undefined) {
+      fail('Undefined');
+    } else {
+      pass(viewport.width + " x " + viewport.height);
+    }
+  });
 
   if(window.session.device.screen.width == undefined && window.session.device.screen.height == undefined){
     $("#screen_size").text("Undefined");
