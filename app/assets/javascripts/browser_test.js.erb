@@ -60,6 +60,28 @@ try {
 var third_party_site_loads;
 var third_party_site_failures;
 
+function test(id, testFunction) {
+  function userDatumId(test_id) {
+    return '#user_datum_' + test_id.substring(1);
+  }
+
+  var pass = function(message) {
+    styleAsPassed(id);
+    $(id).text(message);
+    var user_datum_id = userDatumId(id);
+    $(user_datum_id).val(message);
+  };
+
+  var fail = function(message) {
+    styleAsFailed(id);
+    $(id).text(message);
+    var user_datum_id = userDatumId(id);
+    $(user_datum_id).val(message);
+  }
+
+  testFunction(pass, fail);
+}
+
 function testAll(){
   // alert dismissal
   // $(".alert").alert();
@@ -67,20 +89,16 @@ function testAll(){
   third_party_site_failures = 0;
 
   //loading data from client
-  if(navigator.userAgent == undefined){
-    styleAsFailed("#user_agent_string");
-    $("#user_agent_string").text("Undefined");
-    $("#user_datum_user_agent_string").val("Undefined");
-  }else if(blacklisted()){
-    styleAsFailed("#user_agent_string");
-    $("#user_agent_string").text(navigator.userAgent);
-    $("#user_agent_string").append("\n Your browser may be in a compatibility mode supporting an older version of IE.");
-    $("#user_datum_user_agent_string").val(navigator.userAgent);
-  }else{
-    $("#user_agent_string").text(navigator.userAgent);
-    styleAsPassed("#user_agent_string");
-    $("#user_datum_user_agent_string").val(navigator.userAgent);
-  }
+  test('#user_agent_string', function(pass, fail) {
+    if (navigator.userAgent == undefined) {
+      fail('Undefined');
+    } else if (blacklisted()) {
+      fail(navigator.userAgent + "\n Your browser may be in a compatibility mode supporting an older version of IE.");
+    } else {
+      pass(navigator.userAgent);
+    }
+  });
+
 
   if(window.session.device.viewport.width == undefined && window.session.device.viewport.height == undefined){
     $("#window_size").text("Undefined");
