@@ -142,15 +142,13 @@ function testAll(){
     }
   });
 
-  if(Date() == undefined){
-    $("#date").text("Undefined");
-    styleAsFailed("#date");
-    $("#user_datum_date").val("Undefined");
-  }else{
-    $("#date").text(Date());
-    styleAsPassed("#date");
-    $("#user_datum_date").val(Date());
-  }
+  test('#date', function(pass, fail) {
+    if (Date() == undefined) {
+      fail('Undefined');
+    } else {
+      pass(Date());
+    }
+  });
 
   //Load data from control site https://control.continuity.net/favicon.ico
   $('#imagefavicon').on("error", function() {
