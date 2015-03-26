@@ -1,7 +1,4 @@
-
-<!-- Main hero unit for a primary marketing message or call to action -->
 <% if flash[:notice] %>
-
   <div class="row" id="flash" style="padding-left: 30px;">
     <div class"span12">
       <div class="alert alert-success text-center" id="notice">
@@ -14,113 +11,108 @@
   <div class="row" id="flash">
     <div class="span12">
       <div class="alert alert-error text-center" id="error">
-       <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4><%= flash[:error] %></h4>
       </div>
     </div>
   </div>
-<% else %>
-
 <% end %>
+
 <section class="box">
-<div class="row-fluid">
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>User Agent</h1>
-        <p id="userAgent">Javascript: Disabled</p>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>User Agent</h1>
+          <p id="userAgent">Javascript: Disabled</p>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Window Size</h1>
+          <p id="windowSize">Javascript: Disabled</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Window Size</h1>
-        <p id="windowSize">Javascript: Disabled</p>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Screen Size</h1>
+          <p id="screenSize">Javascript: Disabled</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="row-fluid">
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Screen Size</h1>
-        <p id="screenSize">Javascript: Disabled</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Operating System</h1>
-        <p id="os">Javascript: Disabled</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row-fluid">
-
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Web Browser</h1>
-        <p id="browser">Javascript: Disabled</p>
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Operating System</h1>
+          <p id="os">Javascript: Disabled</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Flash Enabled</h1>
-        <p id="flashEnabled">Javascript: Disabled</p>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Web Browser</h1>
+          <p id="browser">Javascript: Disabled</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="row-fluid">
-
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Date</h1>
-        <p id="date">Javascript: Disabled</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="span6">
-    <div class="alert continuity alert-success">
-      <div>
-        <h1>IP Address</h1>
-        <p>IP Address: <%= request.remote_ip%></p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row-fluid">
-
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>3rd Party Sites</h1>
-        <p id="3rdparty">Javascript: Disabled</p>
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Flash Enabled</h1>
+          <p id="flashEnabled">Javascript: Disabled</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="span6">
-    <div class="alert continuity grey">
-      <div>
-        <h1>Control.Continuity.net Test</h1>
-        <p id="continuity">Javascript: Disabled</p>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Date</h1>
+          <p id="date">Javascript: Disabled</p>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="alert continuity alert-success">
+        <div>
+          <h1>IP Address</h1>
+          <p>IP Address: <%= request.remote_ip%></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>3rd Party Sites</h1>
+          <p id="3rdparty">Javascript: Disabled</p>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="alert continuity grey">
+        <div>
+          <h1>Control.Continuity.net Test</h1>
+          <p id="continuity">Javascript: Disabled</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
