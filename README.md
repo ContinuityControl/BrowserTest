@@ -50,9 +50,7 @@ specs to run, first. And add some more specs.
 ## Some Improvements We Should Make
 
 * [ ] upgrade Google Analytics to Universal Analytics
-* [ ] upgrade to Heroku cedar-14
 * [ ] upgrade to Bootstrap 3
   * [ ] use our new Bootstrap skin/theme/colors/fonts
 * [ ] upgrade to Rails 4.2
-* [ ] upgrade to latest Ruby
 * [ ] add a check for webfonts (Roboto and Fontawesome)
