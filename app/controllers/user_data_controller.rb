@@ -11,7 +11,7 @@ class UserDataController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = 'Invalid Email Address'
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
 

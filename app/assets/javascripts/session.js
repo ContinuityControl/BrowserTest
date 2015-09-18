@@ -196,7 +196,7 @@ var session_fetch = (function(win, doc, nav){
       };
       device.viewport = {
         width: win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth,
-        height: win.innerHeight || doc.documentElement.clientHeight || doc.body.clientHeight 
+        height: win.innerHeight || doc.documentElement.clientHeight || doc.body.clientHeight
       };
       device.is_tablet = !!nav.userAgent.match(/(iPad|SCH-I800|xoom|kindle)/i);
       device.is_phone = !device.is_tablet && !!nav.userAgent.match(/(iPhone|iPod|blackberry|android 0.5|htc|lg|midp|mmp|mobile|nokia|opera mini|palm|pocket|psp|sgh|smartphone|symbian|treo mini|Playstation Portable|SonyEricsson|Samsung|MobileExplorer|PalmSource|Benq|Windows Phone|Windows Mobile|IEMobile|Windows CE|Nintendo Wii)/i);
@@ -308,7 +308,7 @@ var session_fetch = (function(win, doc, nav){
     ipinfodb_location: function(api_key){
       return function (callback){
         var location_cookie = util.get_obj(options.location_cookie);
-        if (!location_cookie && location_cookie.source === 'ipinfodb'){ 
+        if (!location_cookie && location_cookie.source === 'ipinfodb'){
         win.ipinfocb = function(data){
           if (data.statusCode === "OK"){
             data.source = "ipinfodb";
