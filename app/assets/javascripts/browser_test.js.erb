@@ -136,14 +136,14 @@ function testAll(){
   });
 
   test('#continuity_site', function(pass, fail) {
-    //Load data from control site https://control.continuity.net/favicon.ico
+    //Load data from control site //control.continuity.net/favicon.ico
     $('#imagefavicon').on("error", function() {
       fail('Not Loaded');
     });
     $('#imagefavicon').on("load", function(){
       pass('Loaded');
     });
-    $('#imagefavicon').attr('src', "https://control.continuity.net/browser-test.png");
+    $('#imagefavicon').attr('src', "//control.continuity.net/browser-test.png");
   });
 
   //loading data from 3rd party sites
