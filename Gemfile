@@ -20,6 +20,8 @@ gem 'newrelic_rpm'
 
 gem 'honeybadger'
 
+gem 'typhoeus'
+
 group :development do
   gem "sqlite3"
 end

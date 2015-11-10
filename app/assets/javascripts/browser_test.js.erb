@@ -176,13 +176,21 @@ function testAll(){
   }
 
   //Honey badger
-
   if(typeof Honeybadger === 'undefined'){
     appendToOtherSites(false,'HoneyBadger: Not Loaded');
   } else {
     appendToOtherSites(true,'HoneyBadger: Loaded');
   }
 
+  // Box View / Crocodoc
+  var  crocViewer = Crocodoc.createViewer($('#boxViewTest'), { url: $('#boxViewTest').data('session-url') })
+  crocViewer.on('fail', function (e) {
+    appendToOtherSites(false,'BoxView: Not Loaded');
+  });
+  crocViewer.on('ready', function (e) {
+    appendToOtherSites(true,'BoxView: Loaded');
+  });
+  crocViewer.load();
 }
 function appendToOtherSites(loaded, text_to_display) {
   // set string
