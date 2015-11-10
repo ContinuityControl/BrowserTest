@@ -225,10 +225,10 @@ function appendToOtherSites(loaded, text_to_display) {
   }
 
   // handle completion of loads and failures
-  if(third_party_site_loads == 5){
+  if(third_party_site_loads == 6){
     $("#other_sites").text('All loaded');
     styleAsPassed("#other_sites");
-  } else if (third_party_site_loads + third_party_site_failures == 6) {
+  } else if (third_party_site_loads + third_party_site_failures == 7) {
     styleAsFailed("#other_sites");
   }
 }
