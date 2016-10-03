@@ -146,14 +146,6 @@ function testAll(){
     $('#imagefavicon').attr('src', "//control.continuity.net/browser-test.png");
   });
 
-  //loading data from 3rd party sites
-  //beacon-3.newrelic.com - JavaScript performance monitoring
-  if(typeof NREUM === 'undefined'){
-    appendToOtherSites(false, "NewRelic: Not Loaded");
-  }else{
-    appendToOtherSites(true, "NewRelic: Loaded");
-  }
-
   //google.com/jsapi - Google for CDN of JS libraries
   if (typeof google.loader === 'undefined') {
     appendToOtherSites(false, "jsapi: Not Loaded");
@@ -192,6 +184,7 @@ function testAll(){
   });
   crocViewer.load();
 }
+
 function appendToOtherSites(loaded, text_to_display) {
   // set string
   if(loaded){
@@ -225,10 +218,10 @@ function appendToOtherSites(loaded, text_to_display) {
   }
 
   // handle completion of loads and failures
-  if(third_party_site_loads == 6){
+  if(third_party_site_loads == 5){
     $("#other_sites").text('All loaded');
     styleAsPassed("#other_sites");
-  } else if (third_party_site_loads + third_party_site_failures == 7) {
+  } else if (third_party_site_loads + third_party_site_failures == 6) {
     styleAsFailed("#other_sites");
   }
 }
