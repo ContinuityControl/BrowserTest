@@ -119,14 +119,6 @@ function testAll(){
     }
   });
 
-  test('#flash_enabled', function(pass, fail) {
-    if (window.session.plugins.flash == true && window.session.plugins.flash != undefined) {
-      pass(window.session.plugins.flash);
-    } else {
-      fail("False");
-    }
-  });
-
   test('#date', function(pass, fail) {
     if (Date() == undefined) {
       fail('Undefined');
