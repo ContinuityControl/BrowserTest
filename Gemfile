@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.0.0'
+gem 'rails', '~> 5.0.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 5.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -16,9 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'bootstrap-sass', '~> 2.3.2.0'
-
-gem 'newrelic_rpm'
+gem 'bootstrap-sass'
 
 gem 'honeybadger'
 
@@ -36,7 +34,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'byebug'
+  gem 'byebug', platform: :mri
 end
 
 group :doc do
@@ -48,7 +46,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
