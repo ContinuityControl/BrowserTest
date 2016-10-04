@@ -1,219 +1,182 @@
-// TODO list
-/*
-   rename p tags to be more consistent
-   #continuinty-form, #continuity-display
-   more object oriented?
- */
-
-function styleAsPassed(domID) {
-  $(domID).parents(".alert").removeClass("grey").removeClass('alert-error').addClass("alert-success");
-}
-
-function styleAsFailed(domID) {
-  $(domID).parents(".alert").removeClass("grey").addClass("alert-error");
-}
-
 function blacklisted() {
   var parser = new UAParser();
   var browser = parser.getResult().browser.name;
   var version = parseFloat(parser.getResult().browser.version);
 
-  if(browser == 'IE' && version < 8.0){
-    return true;
-  }else{
-    return false;
-  }
+  return (browser === 'IE' && version < 8.0);
 }
 
-//Google Analytics
-var _gaq = _gaq || [];
+function addLoadingNotice(label, $container) {
+  return $('<p class="loading"/>').html(label + ': <span class="state">Loading...</span>').appendTo($container);
+}
 
-_gaq.push(['_setAccount', '<%= ENV["gaA"]%>']);
-_gaq.push(['_trackPageview']);
+function setErrorNotice($notice, message) {
+  message = message || "Error";
+  $notice.find('span.state').html(message);
+  $notice.removeClass('loading').addClass('text-error');
+}
 
-//honey badger
-$(function(){ Honeybadger.configure({
-  api_key: '097b0947f2920dc6355327d2c1c2d1f8' // Public API key
-});
-try {
-  testAll();
-} catch(e) {
-  Honeybadger.notify(e);
-}});
+function setSuccessNotice($notice, message) {
+  message = message || "Success";
 
-//3rd party site count
-var third_party_site_loads;
-var third_party_site_failures;
+  $notice.find('span.state').html(message);
+  $notice.removeClass('loading').addClass('text-success');
+}
 
-function test(id, testFunction) {
-  function userDatumId(test_id) {
-    return '#user_datum_' + test_id.substring(1);
+function domainFromUrl(url) {
+	var a = document.createElement('a');
+	a.href = url;
+	return a.hostname;
+}
+
+function storeUserData(label, value) {
+  window.userData = window.userData || {};
+  window.userData[label] = value;
+}
+
+function checkCustom(label, testFunction) {
+  var $notice = addLoadingNotice(label, $('.results'));
+
+  function success(message) {
+    storeUserData(label, message || true);
+    setSuccessNotice($notice, message);
   }
 
-  var pass = function(message) {
-    styleAsPassed(id);
-    $(id).text(message);
-    var user_datum_id = userDatumId(id);
-    $(user_datum_id).val(message);
-  };
-
-  var fail = function(message) {
-    styleAsFailed(id);
-    $(id).text(message);
-    var user_datum_id = userDatumId(id);
-    $(user_datum_id).val(message);
+  function error(message) {
+    storeUserData(label, message || false);
+    setErrorNotice($notice, message);
   }
 
-  testFunction(pass, fail);
+  testFunction(success, error);
+}
+
+function checkScript(description, src) {
+  checkCustom(domainFromUrl(src), function (pass, fail) {
+    var $script;
+    $script = $('<script/>').
+      on('load', function () { pass(); }).
+      on('error', function () { fail(); }).
+      attr("type", "text/javascript").
+      attr("src", src);
+
+      document.body.appendChild($script[0]);
+  });
+}
+
+function checkImage(description, src) {
+  checkCustom(domainFromUrl(src), function (pass, fail) {
+    $('<img/>').
+      on('load', function () { pass(); }).
+      on('error', function () { fail(); }).
+      attr("src", src);
+  });
+}
+
+function checkDefined(label, variable) {
+  checkCustom(label, function (pass, fail) {
+    if (typeof variable === "undefined") {
+      fail();
+    } else {
+      pass();
+    }
+  });
 }
 
 function testAll(){
-  // alert dismissal
-  // $(".alert").alert();
-  third_party_site_loads = 0;
-  third_party_site_failures = 0;
-
-  //loading data from client
-  test('#user_agent_string', function(pass, fail) {
-    if (navigator.userAgent == undefined) {
-      fail('Undefined');
+  checkCustom('User Agent String', function(success, error) {
+    if (navigator.userAgent === undefined) {
+      error('Undefined');
     } else if (blacklisted()) {
-      fail(navigator.userAgent + "\n Your browser may be in a compatibility mode supporting an older version of IE.");
+      error(navigator.userAgent + "\n Your browser may be in a compatibility mode supporting an older version of IE.");
     } else {
-      pass(navigator.userAgent);
+      success(navigator.userAgent);
     }
   });
 
-  test('#window_size', function(pass, fail) {
+  checkCustom('Window Size', function(success, error) {
     var viewport = window.session.device.viewport;
-    if (viewport.width == undefined && viewport.height == undefined) {
-      fail('Undefined');
+
+    if (viewport.width === undefined && viewport.height === undefined) {
+      error('Undefined');
     } else {
-      pass(viewport.width + " x " + viewport.height);
+      success(viewport.width + " x " + viewport.height);
     }
   });
 
-  test('#screen_size', function(pass, fail) {
-    screen = window.session.device.screen;
-    if (screen.width == undefined && screen.height == undefined) {
-      fail("Undefined");
+  checkCustom('Screen Size', function(success, error) {
+    var screen = window.session.device.screen;
+
+    if (screen.width === undefined && screen.height === undefined) {
+      error("Undefined");
     } else {
-      pass(screen.width + " x " +screen.height);
+      success(screen.width + " x " + screen.height);
     }
   });
 
-  test('#operating_system', function(pass, fail) {
-    if (window.session.browser.os == undefined) {
-      fail("Undefined");
+  checkCustom('Operating System', function(success, error) {
+    if (window.session.browser.os === undefined) {
+      error("Undefined");
     } else {
-      pass(window.session.browser.os);
+      success(window.session.browser.os);
     }
   });
 
-  test('#web_browser', function(pass, fail) {
+  checkCustom('Browser', function(success, error) {
     var browser = window.session.browser;
-    if (browser.browser == undefined && browser.version == undefined) {
-      fail("Undefined");
+
+    if (browser.browser === undefined && browser.version === undefined) {
+      error("Undefined");
     } else {
-      pass(browser.browser + " Version: " + browser.version);
+      success(browser.browser + " " + browser.version);
     }
   });
 
-  test('#date', function(pass, fail) {
-    if (Date() == undefined) {
-      fail('Undefined');
+  checkCustom('Date', function(success, error) {
+    if (Date() === undefined) {
+      error('Undefined');
     } else {
-      pass(Date());
+      success(Date());
     }
   });
 
-  test('#continuity_site', function(pass, fail) {
-    //Load data from control site //control.continuity.net/favicon.ico
-    $('#imagefavicon').on("error", function() {
-      fail('Not Loaded');
-    });
-    $('#imagefavicon').on("load", function(){
-      pass('Loaded');
-    });
-    $('#imagefavicon').attr('src', "//control.continuity.net/browser-test.png");
+  checkImage("Platform: Public CDN", "https://assets-cdn.continuity.net/production/assets/cc_logos/CC_logo_white.png");
+  checkImage("Platform: Control", "https://control.continuity.net/browser-test.png");
+  checkImage("Platform: Private Assets", "https://control-production.s3.amazonaws.com/browser-test.png");
+
+  checkDefined("Support: Live Chat", window.lpTag);
+  checkDefined("Support: Walk-throughs", window._walkmeInternals);
+  checkImage("Support: Walk-through Assets", "https://d2qhvajt3imc89.cloudfront.net/customers/Continuity+Control/Continuity_01_up.png");
+  checkImage("Support: Live Chat Assets", "https://cdn2.hubspot.net/hub/40143/file-2606587361-png/Chat_Images/LiveChat_011.png");
+  checkImage("Support: Live Chat Assets", "https://lpcdn.lpsnmedia.net/le_unified_window/8.4.0.1-release_1917/resources/icons/desktop/sprites_v1.png");
+
+  checkImage("SLA Monitoring: Performance Monitoring", "https://rum-collector.pingdom.net/img/beacon.gif");
+
+  checkDefined("SLA Monitoring: Error Monitoring", window.Honeybadger);
+  checkDefined("Platform: Branch Maps", window.google && window.google.maps);
+  checkDefined("SLA Monitoring: Analytics", window.ga);
+
+  checkCustom("Platform: Document Viewer", function (pass, fail) {
+    var crocViewer, $crocContainer;
+
+    $crocContainer = $('#boxViewTest');
+    crocViewer = Crocodoc.createViewer($crocContainer, { url: $crocContainer.data('session-url') });
+
+    crocViewer.on('fail', function (e) { fail(); });
+    crocViewer.on('ready', function (e) { pass(); });
+
+    crocViewer.load();
   });
-
-  //google.com/jsapi - Google for CDN of JS libraries
-  if (typeof google.loader === 'undefined') {
-    appendToOtherSites(false, "jsapi: Not Loaded");
-  }else{
-    appendToOtherSites(true, "jsapi: Loaded");
-  }
-
-  //ssl.google-analytics.com - Site-usage analytics
-  if (typeof _gat ===  'undefined') {
-    appendToOtherSites(false, "Google Analytics: Not Loaded");
-  }else{
-    appendToOtherSites(true, "Google Analytics: Loaded");
-  }
-
-  //assets-cdn.continuity.net - Continuity Control's Content CDN
-  if(typeof control.datepicker_opts === 'undefined'){
-    appendToOtherSites(false, "CloudFront(assets-cdn.continuity.net): Not Loaded");
-  }else{
-    appendToOtherSites(true, "CloudFront(assets-cdn.continuity.net): Loaded");
-  }
-
-  //Honey badger
-  if(typeof Honeybadger === 'undefined'){
-    appendToOtherSites(false,'HoneyBadger: Not Loaded');
-  } else {
-    appendToOtherSites(true,'HoneyBadger: Loaded');
-  }
-
-  // Box View / Crocodoc
-  var  crocViewer = Crocodoc.createViewer($('#boxViewTest'), { url: $('#boxViewTest').data('session-url') })
-  crocViewer.on('fail', function (e) {
-    appendToOtherSites(false,'BoxView: Not Loaded');
-  });
-  crocViewer.on('ready', function (e) {
-    appendToOtherSites(true,'BoxView: Loaded');
-  });
-  crocViewer.load();
 }
 
-function appendToOtherSites(loaded, text_to_display) {
-  // set string
-  if(loaded){
-    third_party_site_loads += 1;
-    if(third_party_site_loads == 1) {
-      $("#user_datum_other_sites").val(
-        text_to_display
-      );
-    } else {
-      $("#user_datum_other_sites").val(
-        $("#user_datum_other_sites").val() + ", " + text_to_display
-      );
-    }
-  } else {
-    third_party_site_failures += 1;
-    if(third_party_site_failures == 1){
-      $("#other_sites").text(
-        text_to_display
-      );
-      $("#user_datum_other_sites").val(
-        text_to_display
-      );
-    } else {
-      $("#other_sites").text(
-        $("#other_sites").text() + ", " + text_to_display
-      );
-      $("#user_datum_other_sites").val(
-        $("#user_datum_other_sites").val() + ", " + text_to_display
-      );
-    }
-  }
+$(function(){
+  Honeybadger.configure({
+    api_key: '097b0947f2920dc6355327d2c1c2d1f8' // Public API key
+  });
 
-  // handle completion of loads and failures
-  if(third_party_site_loads == 5){
-    $("#other_sites").text('All loaded');
-    styleAsPassed("#other_sites");
-  } else if (third_party_site_loads + third_party_site_failures == 6) {
-    styleAsFailed("#other_sites");
+  try {
+    testAll();
+  } catch(e) {
+    Honeybadger.notify(e);
   }
-}
+});
+
