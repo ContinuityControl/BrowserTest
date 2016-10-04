@@ -10,7 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require honeybadger
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-alert
+//= require ua-parser-js
+//= require session.js/session.js
 //= require_tree .

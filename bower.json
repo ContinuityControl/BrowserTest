@@ -1,0 +1,24 @@
+{
+  "name": "browser_test",
+  "description": "browser_test",
+  "main": "index.js",
+  "license": "Copyright (C) Continuity Engine, Inc. - All Rights Reserved",
+  "homepage": "https://github.com/ContinuityControl/BrowserTest",
+  "moduleType": [
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ua-parser-js": "^0.7.10",
+    "honeybadger": "^0.4.3",
+    "session.js": "^0.4.1"
+  }
+}
