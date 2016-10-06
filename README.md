@@ -1,6 +1,8 @@
 ## What Is This?
 
-A simple site that automatically tests a user's browser capabilities, to help
+This is the code behind [test.continuity.net](http://test.continuity.net/).
+
+It's a simple site that automatically tests a user's browser capabilities, to help
 us troubleshoot things like desk tickets. It also lets users submit their data
 to us: they provide their email address (so we know who it came from), and all
 the data is sent to Desk (they're sent a copy, too).
