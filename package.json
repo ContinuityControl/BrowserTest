@@ -1,0 +1,21 @@
+{
+  "name": "browser-test",
+  "version": "1.0.0",
+  "description": "A simple site that automatically tests a user's browser capabilities, to help us troubleshoot things like desk tickets. It also lets users submit their data to us: they provide their email address (so we know who it came from), and all the data is sent to Desk (they're sent a copy, too).",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ContinuityControl/BrowserTest.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ContinuityControl/BrowserTest/issues"
+  },
+  "homepage": "https://github.com/ContinuityControl/BrowserTest#readme"
+}
