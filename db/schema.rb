@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,23 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715165219) do
+ActiveRecord::Schema.define(version: 20161013193319) do
 
-  create_table "user_data", force: true do |t|
-    t.string   "email_address"
-    t.string   "user_agent_string"
-    t.string   "window_size"
-    t.string   "screen_size"
-    t.string   "operating_system"
-    t.string   "web_browser"
-    t.string   "flash_enabled"
-    t.string   "date"
-    t.string   "ip_address"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "user_data", force: :cascade do |t|
+    t.string   "email_address", null: false
+    t.inet     "ip_address",    null: false
     t.string   "honeypot"
-    t.string   "continuity_site"
-    t.string   "other_sites"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.jsonb    "data",          null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

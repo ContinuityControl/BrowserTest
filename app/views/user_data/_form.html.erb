@@ -11,17 +11,9 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :user_agent_string  %>
-  <%= f.hidden_field :window_size %>
-  <%= f.hidden_field :screen_size %>
-  <%= f.hidden_field :operating_system %>
-  <%= f.hidden_field :web_browser %>
-  <%= f.hidden_field :flash_enabled %>
-  <%= f.hidden_field :date %>
   <%= f.hidden_field :ip_address, :value => request.remote_ip %>
   <%= f.hidden_field :honeypot %>
-  <%= f.hidden_field :continuity_site %>
-  <%= f.hidden_field :other_sites %>
+  <%= f.hidden_field :data %>
 
   <div class="form-group">
     <%= f.email_field :email_address, placeholder: "Email", class: "form-control" %>
