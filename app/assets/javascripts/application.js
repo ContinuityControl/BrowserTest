@@ -12,8 +12,8 @@
 //
 //= require honeybadger
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require bootstrap-alert
 //= require ua-parser-js
 //= require session.js/session.js
 //= require_tree .

@@ -1,57 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Continuity Control</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="<%= image_path 'favicon.ico' %>">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="./assets/js/html5shiv.js"></script>
-    <![endif]-->
 
+    <title>Continuity</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700" rel="stylesheet" type="text/css">
     <%= stylesheet_link_tag "application" %>
-    <style type="text/css">
-      body {
-        padding-top: 10%;
-        padding-bottom: 10%;
-  }
-    </style>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="navbar navbar-continuity navbar-fixed-top">
-      <!-- div class="navbar navbar-inverse navbar-fixed-top" style="color=#33CC33;" -->
-      <div class="navbar-inner">
-        <div class="container">
-          <a href="http://www.continuity.net/" class="brand">
-            <%= image_tag 'CC_logo_white.png', style: 'padding-top: 10px;' %>
+		<nav class="navbar navbar-continuity navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+          <a href="http://www.continuity.net/" class="navbar-left">
+            <%= image_tag 'CC_logo_white.png' %>
           </a>
-          <div class="input-append pull-right" style="padding-top: 5px;">
-            <h4 style="color:#FFFFFF;">Send your results to Continuity</h4>
-            <%= render "user_data/form" %>
-          </div>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+          <%= render "user_data/form" %>
+				</div><!--/.navbar-collapse -->
+			</div>
+		</nav>
 
-    <div class="container">
+    <div id="main-container" class="container">
       <%= yield %>
     </div>
-    <footer>
-      <p>&copy; Continuity Control <%= Date.current.year %></p>
-      <p>Browser Test v<%= File.read(Rails.root.join('VERSION')) %></p>
-    </footer>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <footer>
+      <div class="container">
+        <p>&copy; Continuity Control <%= Date.current.year %></p>
+        <p>Continuity Browser and Connectivity Test v<%= File.read(Rails.root.join('VERSION')) %></p>
+      </div>
+    </footer>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

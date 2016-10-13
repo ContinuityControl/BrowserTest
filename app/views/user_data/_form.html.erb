@@ -1,26 +1,30 @@
-<%= form_for(@user_datum) do |f| %>
+<%= form_for(@user_datum, html: {class: "navbar-form navbar-right"}) do |f| %>
   <% if @user_datum.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user_datum.errors.count, "error") %> prohibited this user_datum from being saved:</h2>
 
       <ul>
-      <% @user_datum.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @user_datum.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-    <%= f.hidden_field :user_agent_string  %>
-    <%= f.hidden_field :window_size %>
-    <%= f.hidden_field :screen_size %>
-    <%= f.hidden_field :operating_system %>
-    <%= f.hidden_field :web_browser %>
-    <%= f.hidden_field :flash_enabled %>
-    <%= f.hidden_field :date %>
-    <%= f.hidden_field :ip_address, :value => request.remote_ip %>
-    <%= f.hidden_field :honeypot %>
-    <%= f.hidden_field :continuity_site %>
-    <%= f.hidden_field :other_sites %>
-    <%= f.email_field :email_address, placeholder: "Enter Your Email" %>
-    <%= f.submit :value => 'Send data', :class => 'btn' %>
+
+  <%= f.hidden_field :user_agent_string  %>
+  <%= f.hidden_field :window_size %>
+  <%= f.hidden_field :screen_size %>
+  <%= f.hidden_field :operating_system %>
+  <%= f.hidden_field :web_browser %>
+  <%= f.hidden_field :flash_enabled %>
+  <%= f.hidden_field :date %>
+  <%= f.hidden_field :ip_address, :value => request.remote_ip %>
+  <%= f.hidden_field :honeypot %>
+  <%= f.hidden_field :continuity_site %>
+  <%= f.hidden_field :other_sites %>
+
+  <div class="form-group">
+    <%= f.email_field :email_address, placeholder: "Email", class: "form-control" %>
+  </div>
+  <%= f.submit :value => 'Send data', :class => 'btn btn-success' %>
 <% end %>

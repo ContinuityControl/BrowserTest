@@ -7,20 +7,18 @@ function blacklisted() {
 }
 
 function addLoadingNotice(label, $container) {
-  return $('<p class="loading"/>').html(label + ': <span class="state">Loading...</span>').appendTo($container);
+  return $('<div class="row notice"/>').html('<div class="notice-label col-md-6">' + label + '</div>' + '<div class="notice-state text-muted col-md-6">Loading...</div>').appendTo($container);
 }
 
 function setErrorNotice($notice, message) {
   message = message || "Error";
-  $notice.find('span.state').html(message);
-  $notice.removeClass('loading').addClass('text-error');
+  $notice.find('.notice-state').html(message).removeClass('text-muted').addClass('text-danger');
 }
 
 function setSuccessNotice($notice, message) {
   message = message || "Success";
 
-  $notice.find('span.state').html(message);
-  $notice.removeClass('loading').addClass('text-success');
+  $notice.find('.notice-state').html(message).removeClass('text-muted').addClass('text-success');
 }
 
 function domainFromUrl(url) {
@@ -34,8 +32,12 @@ function storeUserData(label, value) {
   window.userData[label] = value;
 }
 
-function checkCustom(label, testFunction) {
-  var $notice = addLoadingNotice(label, $('.results'));
+function checkCustom(description, domain, $container, testFunction) {
+  var label, $notice;
+
+  label = description + '<br><small>' + domain + '</small>';
+  $container = $container || $('.results');
+  $notice = addLoadingNotice(label, $container);
 
   function success(message) {
     storeUserData(label, message || true);
@@ -51,7 +53,7 @@ function checkCustom(label, testFunction) {
 }
 
 function checkScript(description, src) {
-  checkCustom(domainFromUrl(src), function (pass, fail) {
+  checkCustom(description, domainFromUrl(src), undefined, function (pass, fail) {
     var $script;
     $script = $('<script/>').
       on('load', function () { pass(); }).
@@ -64,7 +66,7 @@ function checkScript(description, src) {
 }
 
 function checkImage(description, src) {
-  checkCustom(domainFromUrl(src), function (pass, fail) {
+  checkCustom(description, domainFromUrl(src), undefined, function (pass, fail) {
     $('<img/>').
       on('load', function () { pass(); }).
       on('error', function () { fail(); }).
@@ -72,8 +74,8 @@ function checkImage(description, src) {
   });
 }
 
-function checkDefined(label, variable) {
-  checkCustom(label, function (pass, fail) {
+function checkDefined(description, domain, variable) {
+  checkCustom(description, domain, undefined, function (pass, fail) {
     if (typeof variable === "undefined") {
       fail();
     } else {
@@ -82,8 +84,12 @@ function checkDefined(label, variable) {
   });
 }
 
+function showBrowserInfo(description, testFunction) {
+  checkCustom(description, "", $('.browser-info'), testFunction);
+}
+
 function testAll(){
-  checkCustom('User Agent String', function(success, error) {
+  showBrowserInfo('User Agent String', function(success, error) {
     if (navigator.userAgent === undefined) {
       error('Undefined');
     } else if (blacklisted()) {
@@ -93,7 +99,7 @@ function testAll(){
     }
   });
 
-  checkCustom('Window Size', function(success, error) {
+  showBrowserInfo('Window Size', function(success, error) {
     var viewport = window.session.device.viewport;
 
     if (viewport.width === undefined && viewport.height === undefined) {
@@ -103,7 +109,7 @@ function testAll(){
     }
   });
 
-  checkCustom('Screen Size', function(success, error) {
+  showBrowserInfo('Screen Size', function(success, error) {
     var screen = window.session.device.screen;
 
     if (screen.width === undefined && screen.height === undefined) {
@@ -113,7 +119,7 @@ function testAll(){
     }
   });
 
-  checkCustom('Operating System', function(success, error) {
+  showBrowserInfo('Operating System', function(success, error) {
     if (window.session.browser.os === undefined) {
       error("Undefined");
     } else {
@@ -121,7 +127,7 @@ function testAll(){
     }
   });
 
-  checkCustom('Browser', function(success, error) {
+  showBrowserInfo('Browser', function(success, error) {
     var browser = window.session.browser;
 
     if (browser.browser === undefined && browser.version === undefined) {
@@ -131,7 +137,7 @@ function testAll(){
     }
   });
 
-  checkCustom('Date', function(success, error) {
+  showBrowserInfo('Date', function(success, error) {
     if (Date() === undefined) {
       error('Undefined');
     } else {
@@ -142,20 +148,20 @@ function testAll(){
   checkImage("Platform: Public CDN", "https://assets-cdn.continuity.net/production/assets/cc_logos/CC_logo_white.png");
   checkImage("Platform: Control", "https://control.continuity.net/browser-test.png");
   checkImage("Platform: Private Assets", "https://control-production.s3.amazonaws.com/browser-test.png");
+  checkDefined("Platform: Branch Maps", "maps.googleapis.com", window.google && window.google.maps);
 
-  checkDefined("Support: Live Chat", window.lpTag);
-  checkDefined("Support: Walk-throughs", window._walkmeInternals);
+  checkDefined("Support: Live Chat", "lptag.liveperson.net", window.lpTag);
+  checkDefined("Support: Walk-throughs", "cdn.walkme.com", window._walkmeInternals);
   checkImage("Support: Walk-through Assets", "https://d2qhvajt3imc89.cloudfront.net/customers/Continuity+Control/Continuity_01_up.png");
   checkImage("Support: Live Chat Assets", "https://cdn2.hubspot.net/hub/40143/file-2606587361-png/Chat_Images/LiveChat_011.png");
   checkImage("Support: Live Chat Assets", "https://lpcdn.lpsnmedia.net/le_unified_window/8.4.0.1-release_1917/resources/icons/desktop/sprites_v1.png");
 
   checkImage("SLA Monitoring: Performance Monitoring", "https://rum-collector.pingdom.net/img/beacon.gif");
 
-  checkDefined("SLA Monitoring: Error Monitoring", window.Honeybadger);
-  checkDefined("Platform: Branch Maps", window.google && window.google.maps);
-  checkDefined("SLA Monitoring: Analytics", window.ga);
+  checkDefined("SLA Metrics: Error Monitoring", "api.honeybadger.io", window.Honeybadger);
+  checkDefined("SLA Metrics: Analytics", "ssl.google-analytics.com ", window.ga);
 
-  checkCustom("Platform: Document Viewer", function (pass, fail) {
+  checkCustom("Platform: Document Viewer", "view-api.box.com", undefined, function (pass, fail) {
     var crocViewer, $crocContainer;
 
     $crocContainer = $('#boxViewTest');

@@ -1,122 +1,46 @@
 @charset "utf-8";
 
-$continuity_green: #6fb536;
-$continuity_blue: #002545;
+@import "partials/variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
-$blue: #21597c;
-
-$bodyBackground: #B0C8D7;
-$linkColor: #065680;
-
-$btnPrimaryBackground: $blue;
-$btnPrimaryBackgroundHighlight: darken($btnPrimaryBackground, 10%);
-
-$btnSuccessBackground: $continuity_green;
-$btnSuccessBackgroundHighlight: darken($btnSuccessBackground, 10%);
-
-$navbarBackground: #184C77;
-$navbarLinkColor: #A9DFFF;
-$navbarLinkColorHover: #A9DFFF;
-
-@import 'bootstrap';
-/* @import 'bootstrap-responsive'; */
-
-@import 'new/navbar';
-@import 'new/footer';
-@import 'new/jquery-ui';
-@import 'new/side_menu';
-@import 'new/tabs';
-@import 'partials/_fancybox';
-
-#main-container { padding-top: 24px; min-height: 500px; }
-
-input, textarea, .uneditable-input, .scrollable { width: 270px; }
-@media (min-width: 1200px) { input, textarea, .uneditable-input, .scrollable { width: 530px; } }
-@media (min-width: 768px) and (max-width: 979px) { input, textarea, .uneditable-input, .scrollable { width: 270px; } }
-@media (max-width: 767px) { input, textarea, .uneditable-input, .scrollable { width: 270px; } }
-@media (max-width: 480px) { input, textarea, .uneditable-input, .scrollable { width: 206px; } }
-
-.box {
-  @extend .well;
-  @include clearfix();
-//  @include border-radius(4px);
-  border: 1px solid #8197A5;
-  background: white;
+.navbar-continuity {
+  background-color: #09243f;
+  border-bottom: 1px solid $white;
 }
 
-.tabs {
-  @extend .box;
-  margin-bottom: 16px;
+footer {
+  background-color: #09243f;
+  border-bottom: 1px solid $white;
+  color: $white;
+  margin-top: 16px;
+  padding: 24px;
 }
 
-ul.asset-list {
-  @extend .unstyled;
-
-  > li {
-    margin-bottom: 8px;
-    font-size: 16px;
-    line-height: 30px;
-  }
-}
-table.asset-table {
-  @extend .table;
-  clear: both;
-}
-
-.btn-new {
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .pull-right;
-  margin-bottom: 20px;
-}
-.actions {
-  @extend .pull-right;
-}
-.scrollable {
-  @extend .uneditable-input; // make it look like a form element
-  background-color: #FFF; // make it look like an editable form element
-  color: #555; // make it look like an editable form element
-
-  // vertical scroll
-  height: 160px;
-  overflow-y: auto;
-}
-fieldset {
-  @include border-radius(4px);
-  border: 1px solid #CCC;
-  padding: 16px 0;
-}
-.form-indent {
-  input, textarea, .uneditable-input, .scrollable, .scrollable {
-    margin-left: 16px;
+@media (min-width: $screen-md-min) {
+  .navbar-continuity {
+    background: url(https://assets-cdn.continuity.net/production/assets/header/header-bg.jpg) no-repeat center center #09243f;
   }
 }
 
+#main-container {
+  background-color: $white;
+  margin-top: 16px;
+  padding-top: 16px;
+}
 
-div.alert.continuity{
-  min-height:100px;
-  max-height:100px;
-  border-spacing: 19px;
-  margin-bottom: 10px;
-  h1{
-    line-height: 10px;
-    font-size: 18px;
-  }
+.notice {
+  border-top: 1px solid $gray-light;
+  font-size: $font-size-larger;
+  font-weight: $font-weight-normal;
+  margin: 0;
+  padding: 11px 0;
 }
-.grey{
-    	background-color: #D3D3D3;
-    	color: #808080;
-    	outline-color: #D3D3D3;
-		border: 1px solid #D3D3D3;
-    }
-div.span6{
-  margin-left:10px;
-	text-align: center;
-	padding-bottom: 10px;
+
+.browser-info .text-success {
+  @extend .text-info;
 }
-footer{
-	padding-left: 5%;
-}
-.box {
-  padding-bottom: 0px;
+
+.browser-info .text-error {
+  @extend .text-muted;
 }

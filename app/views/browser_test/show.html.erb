@@ -1,6 +1,6 @@
 <% if flash[:notice] %>
   <div class="row" id="flash" style="padding-left: 30px;">
-    <div class"span12">
+    <div class"col-md-12">
       <div class="alert alert-success text-center" id="notice">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4><%= flash[:notice] %></h4>
@@ -9,7 +9,7 @@
   </div>
 <% elsif flash[:error] %>
   <div class="row" id="flash">
-    <div class="span12">
+    <div class="col-md-12">
       <div class="alert alert-error text-center" id="error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4><%= flash[:error] %></h4>
@@ -18,15 +18,19 @@
   </div>
 <% end %>
 
-<section class="box">
-  <div class="row-fluid">
-    <div class="span12 results">
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Browser Info</h2>
+    <div class="browser-info"></div>
   </div>
-</section>
+</div>
 
-<img id="imagecloudfront" style="display:none"></img>
-<img id="imagefavicon" style="display:none"></img>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Connectivity Tests</h2>
+    <div class="results"></div>
+  </div>
+</div>
 
 <script type="text/javascript">
   var __lc = {};
