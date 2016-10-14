@@ -152,8 +152,10 @@ function testAll(){
   checkImage("Platform: Private Assets", "https://control-production.s3.amazonaws.com/browser-test.png");
   checkDefined("Platform: Branch Maps", "maps.googleapis.com", window.google && window.google.maps);
 
-  checkDefined("Support: Live Chat", "lptag.liveperson.net", window.lpTag);
-  checkDefined("Support: Walk-throughs", "cdn.walkme.com", window._walkmeInternals);
+  // TODO:
+  //checkDefined("Support: Live Chat", "lptag.liveperson.net", window.lpTag);
+  //checkDefined("Support: Walk-throughs", "cdn.walkme.com", window._walkmeInternals);
+
   checkImage("Support: Walk-through Assets", "https://d2qhvajt3imc89.cloudfront.net/customers/Continuity+Control/Continuity_01_up.png");
   checkImage("Support: Live Chat Assets", "https://cdn2.hubspot.net/hub/40143/file-2606587361-png/Chat_Images/LiveChat_011.png");
   checkImage("Support: Live Chat Assets", "https://lpcdn.lpsnmedia.net/le_unified_window/8.4.0.1-release_1917/resources/icons/desktop/sprites_v1.png");
