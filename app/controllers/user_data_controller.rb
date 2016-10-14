@@ -7,9 +7,10 @@ class UserDataController < ApplicationController
 
     if @user_datum.save
       Mailer.send_data(@user_datum).deliver
-      flash[:notice] = 'Thank You for submitting your data.'
+      flash[:notice] = 'Thank you for submitting your data.'
       redirect_to root_path
     else
+      # TODO: There are other validations, this isn't always true
       flash[:error] = 'Invalid Email Address'
       redirect_to root_path
     end
