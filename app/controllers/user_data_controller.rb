@@ -23,7 +23,6 @@ class UserDataController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_datum_params
-      params.require(:user_datum).permit(:email_address, :user_agent_string, :window_size, :screen_size, :operating_system, :web_browser, :flash_enabled,
-      :date, :ip_address, :continuity_site, :other_sites)
+      params.require(:user_datum).permit(:email_address, :honeypot, :ip_address, :data)
     end
 end

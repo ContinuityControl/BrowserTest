@@ -30,22 +30,24 @@ function domainFromUrl(url) {
 function storeUserData(label, value) {
   window.userData = window.userData || {};
   window.userData[label] = value;
+  $('#user_datum_data').val(JSON.stringify(window.userData, null, 2));
 }
 
 function checkCustom(description, domain, $container, testFunction) {
-  var label, $notice;
+  var html_label, text_label, $notice;
 
-  label = description + '<br><small>' + domain + '</small>';
+  html_label = description + '<br><small>' + domain + '</small>';
+  text_label = description + ' (' + domain + ')';
   $container = $container || $('.results');
-  $notice = addLoadingNotice(label, $container);
+  $notice = addLoadingNotice(html_label, $container);
 
   function success(message) {
-    storeUserData(label, message || true);
+    storeUserData(text_label, message || true);
     setSuccessNotice($notice, message);
   }
 
   function error(message) {
-    storeUserData(label, message || false);
+    storeUserData(text_label, message || false);
     setErrorNotice($notice, message);
   }
 
@@ -158,8 +160,8 @@ function testAll(){
 
   checkImage("SLA Monitoring: Performance Monitoring", "https://rum-collector.pingdom.net/img/beacon.gif");
 
-  checkDefined("SLA Metrics: Error Monitoring", "api.honeybadger.io", window.Honeybadger);
-  checkDefined("SLA Metrics: Analytics", "ssl.google-analytics.com ", window.ga);
+  checkDefined("SLA Monitoring: Error Monitoring", "api.honeybadger.io", window.Honeybadger);
+  checkDefined("SLA Monitoring: Analytics", "ssl.google-analytics.com ", window.ga);
 
   checkCustom("Platform: Document Viewer", "view-api.box.com", undefined, function (pass, fail) {
     var crocViewer, $crocContainer;
