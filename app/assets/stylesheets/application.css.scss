@@ -20,12 +20,16 @@ footer {
 
 @media (min-width: $screen-md-min) {
   .navbar-continuity {
-    background: url(https://assets-cdn.continuity.net/production/assets/header/header-bg.jpg) no-repeat center center #09243f;
+    background: url(https://assets-cdn.continuity.net/production/assets/header/background-blur.svg) no-repeat center top #06243e;
   }
 }
 
 #main-container {
   background-color: $white;
+}
+
+.navbar-continuity .navbar-toggle .icon-bar {
+  background-color: #fff;
 }
 
 .notice {
