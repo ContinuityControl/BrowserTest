@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -24,6 +24,7 @@ gem 'typhoeus'
 
 group :development do
   gem "sqlite3"
+  gem 'listen'
 end
 
 group :production do
