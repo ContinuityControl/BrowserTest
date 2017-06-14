@@ -19,3 +19,5 @@
 config/database.yml
 node_modules
 npm-debug.log
+/public/packs
+/node_modules

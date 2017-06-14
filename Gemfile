@@ -1,14 +1,18 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
-
-# Use SCSS for stylesheets
+gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -24,7 +28,9 @@ gem 'typhoeus'
 
 group :development do
   gem "sqlite3"
-  gem 'listen'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :production do
@@ -36,6 +42,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'capybara', '~> 2.13'
 end
 
 group :doc do
@@ -46,8 +53,6 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the app server
-gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
